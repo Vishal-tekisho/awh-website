@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<title>Notifications &amp; Reminders · AWH Admin Control Center</title>
+<link rel="stylesheet" href="/css/notifications-reminders.css">
+</head>
+<body>
+
+<div class="app">
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="side">
+    <div class="brand">
+      <span class="lg"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M10 3h4a1 1 0 0 1 1 1v5h5a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-5v5a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-5H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h5V4a1 1 0 0 1 1-1z"/></svg></span>
+      <div><b>Advanced Wound Healing</b><span>P01 · Clinic Admin</span></div>
+    </div>
+
+    <div class="navgroup">Dashboard</div>
+    <nav class="nav">
+      <a href="admin-dashboard.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span> <span class="lbltxt">Setup Readiness</span></a>
+    </nav>
+
+    <div class="navgroup">Clinic Setup</div>
+    <nav class="nav">
+      <a href="clinic-branch.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg></span> <span class="lbltxt">Clinic &amp; Branches</span></a>
+      <a href="roles-departments.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></span> <span class="lbltxt">Departments &amp; Units</span></a>
+      <a href="rooms-areas.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21"/></svg></span> <span class="lbltxt">Rooms &amp; Care Areas</span></a>
+      <a href="counters-points.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></span> <span class="lbltxt">Counters &amp; Service Points</span></a>
+      <a href="equipment-resources.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06A1.65 1.65 0 0 0 15 19.4a1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15H4a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 5.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span> <span class="lbltxt">Resources &amp; Equipment</span></a>
+    </nav>
+
+    <div class="navgroup">Clinical Catalogue</div>
+    <nav class="nav">
+      <a href="services-consultation-types.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg></span> <span class="lbltxt">Services &amp; Consultation Types</span> <span class="ct bad">297</span></a>
+      <a href="treatments-procedures.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg></span> <span class="lbltxt">Treatments &amp; Procedures</span></a>
+      <a href="packages-pricing.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></span> <span class="lbltxt">Packages &amp; Reference Pricing</span></a>
+    </nav>
+
+    <div class="navgroup">People &amp; Access</div>
+    <nav class="nav">
+      <a href="doctors-staff.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span> <span class="lbltxt">Doctors &amp; Staff</span></a>
+      <a href="roster-sessions.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span> <span class="lbltxt">Doctor Sessions &amp; Staff Rosters</span> <span class="ct warn">3</span></a>
+      <a href="user-onboard.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span> <span class="lbltxt">Users, Roles &amp; Permissions</span> <span class="ct warn">2</span></a>
+    </nav>
+
+    <div class="navgroup">Scheduling Rules</div>
+    <nav class="nav">
+      <a href="availability.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg></span> <span class="lbltxt">Calendars &amp; Availability</span></a>
+      <a href="resource-availability.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg></span> <span class="lbltxt">Resource Availability</span></a>
+      <a href="slots-queue-rules.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span> <span class="lbltxt">Slots, Capacity, Booking &amp; Queue Rules</span></a>
+    </nav>
+
+    <div class="navgroup">Patient &amp; EMR Configuration</div>
+    <nav class="nav">
+      <a href="patient-fields.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span> <span class="lbltxt">Patient Fields, Identity &amp; Consent</span></a>
+      <a href="emr-templates.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12h6M9 16h6M9 8h6"/><rect x="4" y="3" width="16" height="18" rx="2"/></svg></span> <span class="lbltxt">EMR Templates &amp; Clinical Metrics</span></a>
+      <a href="medication-config.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 20.5a6 6 0 0 1-8.49-8.49l9-9a6 6 0 0 1 8.49 8.49z"/><line x1="8.5" y1="8.5" x2="15.5" y2="15.5"/></svg></span> <span class="lbltxt">Medication &amp; Prescription</span></a>
+      <a href="orders-care-plans.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span> <span class="lbltxt">Clinical Orders &amp; Care Plans</span></a>
+    </nav>
+
+    <div class="navgroup">Clinical Support Masters</div>
+    <nav class="nav">
+      <a href="clinical-support-masters.html#lab"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3v6l-5 9a2 2 0 0 0 1.7 3h12.6a2 2 0 0 0 1.7-3l-5-9V3"/><line x1="8" y1="3" x2="16" y2="3"/></svg></span> <span class="lbltxt">Laboratory</span></a>
+      <a href="clinical-support-masters.html#pharm"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg></span> <span class="lbltxt">Pharmacy Reference</span></a>
+      <a href="clinical-support-masters.html#inv"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg></span> <span class="lbltxt">Inventory &amp; Stores</span></a>
+      <a href="clinical-support-masters.html#bed"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg></span> <span class="lbltxt">Lightweight Stay</span></a>
+    </nav>
+
+    <div class="navgroup">Reference Masters &amp; Audit</div>
+    <nav class="nav">
+      <a href="reference-audit.html#ref"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></span> <span class="lbltxt">Reference Values</span></a>
+      <a href="reference-audit.html#ids"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/></svg></span> <span class="lbltxt">Identifier Rules</span></a>
+      <a href="reference-audit.html#lifecycle"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></span> <span class="lbltxt">Configuration Lifecycle</span></a>
+      <a href="reference-audit.html#audit"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span> <span class="lbltxt">Audit History</span></a>
+    </nav>
+
+    <div class="navgroup">Engagement &amp; System</div>
+    <nav class="nav">
+      <a class="on" href="notifications-reminders.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></span> <span class="lbltxt">Notifications &amp; Reminders</span></a>
+      <a href="knowledge-base.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span> <span class="lbltxt">Knowledge Base</span> <span class="ct warn">1</span></a>
+    </nav>
+
+    <div class="sync"><span class="live"><i></i> Live</span> · synced just now</div>
+    <div class="user">
+      <span class="av">RM</span>
+      <div class="utxt"><b>Rajeev Malhotra</b><span>Hospital Administrator</span></div>
+      <a class="lout" href="login.html" title="Sign out"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></a>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <div class="main">
+    <div class="content">
+
+      <div class="wsbar">
+        <div class="htitle">
+          <h1>Notifications &amp; Reminders</h1>
+          <p><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+             Templates, reminder automation and delivery health</p>
+        </div>
+        <span class="sp"></span>
+        <div class="cdrop branchpick" id="ctxBrDrop">
+          <button type="button" class="cdbtn" id="ctxBrBtn">
+            <span class="bic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span class="cdlbl" id="ctxBrBtnLbl">Main Campus</span>
+            <svg class="chv" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="cdmenu" id="ctxBrMenu">
+            <div class="cdsearch"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input type="text" id="ctxBrSearch" placeholder="Search branch…" autocomplete="off"></div>
+            <div class="cdlist" id="ctxBrList"></div>
+            <div class="cdempty" id="ctxBrEmpty">No matches</div>
+          </div>
+        </div>
+        <div class="mseg" id="tabSeg">
+          <button class="on" data-v="tpl">Templates</button>
+          <button data-v="auto">Automation</button>
+          <button data-v="log">Delivery log</button>
+        </div>
+        <button class="btn btn-primary" id="newTplBtn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> New template
+        </button>
+        <div class="bellwrap">
+          <button class="hbtn" id="alertBtn" title="Staff alerts" aria-haspopup="true" aria-expanded="false">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <span class="cnt" id="bellCnt">3</span>
+          </button>
+          <!-- staff operational alerts (BRD 07.4) · small window under the bell -->
+          <div class="bellmenu" id="alertMenu" role="dialog" aria-label="Staff alerts">
+            <div class="bmh">
+              <b>Staff alerts</b>
+              <span class="chip bad" id="alertChip">3 active</span>
+            </div>
+            <div id="alertList">
+              <div class="arow" style="--ab:var(--danger-soft);--ac:var(--danger)">
+                <span class="aic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.68 13.31a16 16 0 0 0 3.41 2.6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.42 19.42 0 0 1-6-6"/><line x1="23" y1="1" x2="1" y2="23"/></svg></span>
+                <div class="atx"><b>12 messages failed on invalid numbers today</b><span>Front desk should verify the patient&#8217;s mobile number at the next visit. Messages are not retried automatically</span></div>
+                <button class="mini">Resolve</button>
+              </div>
+              <div class="arow" style="--ab:var(--warning-soft);--ac:var(--warning)">
+                <span class="aic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>
+                <div class="atx"><b>WhatsApp 24-hour session window expired for 8 sends</b><span>Patients hadn&#8217;t replied in 24 hours. Provider auto-queues these until the patient messages back; no clinic-side action needed</span></div>
+                <button class="mini">Resolve</button>
+              </div>
+              <div class="arow" style="--ab:var(--warning-soft);--ac:var(--warning)">
+                <span class="aic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></span>
+                <div class="atx"><b>SMS credits below threshold</b><span>12,650 left · renewal of ₹18,400 due 31 August 2026. Raised with Tekisho Operations</span></div>
+                <button class="mini">Resolve</button>
+              </div>
+            </div>
+            <div class="empty" id="alertEmpty" style="display:none">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <b>No active alerts</b><span>Resolved alerts leave the attention list automatically.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= TAB 1 · TEMPLATES ================= -->
+      <section class="view on" id="v-tpl">
+        <!-- credit / health strip · Templates tab only -->
+        <div class="pills">
+          <span class="pill" style="--pc:var(--success)"><i></i> WhatsApp credits <b class="num">8,420</b></span>
+          <span class="pill" style="--pc:var(--info)"><i></i> SMS credits <b class="num">12,650</b></span>
+          <span class="pill" style="--pc:var(--st-inconsult)"><i></i> Email quota <b class="num">45,000</b></span>
+          <span class="pill" style="--pc:var(--brand)"><i></i> Delivery rate <b class="num">97.4%</b></span>
+          <span class="pill" style="--pc:var(--danger)"><i></i> Failed today <b class="num">18</b></span>
+          <span class="sp"></span>
+          <span class="pill" style="--pc:var(--warning)"><i></i> Renewal 31 August 2026 · <b class="num">₹18,400</b></span>
+        </div>
+
+        <div class="tlay">
+
+          <div class="card">
+            <div class="ch">
+              <span class="cico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H5.5L4 18z"/></svg></span>
+              <div><h3>Message templates</h3><p id="tplSub">7 templates · 2 awaiting Meta approval</p></div>
+              <div class="rt">
+                <select class="fld" id="chanSel" title="Filter templates by channel" style="width:auto;padding:7px 32px 7px 10px;font-size:12px;font-weight:600">
+                  <option value="all">All channels (7)</option>
+                  <option value="wa">WhatsApp (7)</option>
+                  <option value="sms">SMS (5)</option>
+                  <option value="email">Email (4)</option>
+                  <option value="push">Push (2)</option>
+                  <option value="ivr">IVR / Voice (1)</option>
+                </select>
+              </div>
+            </div>
+            <div class="cb" id="tplList"></div>
+          </div>
+
+          <div class="card pv">
+            <div class="ch" style="padding:11px 13px">
+              <div><h3 style="font-size:13px">Live preview</h3><p id="pvName">Appointment Confirmation</p></div>
+            </div>
+            <div class="pvhead" id="pvChans"></div>
+            <div class="pvbody" id="pvBody"></div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ================= TAB 2 · AUTOMATION ================= -->
+      <section class="view" id="v-auto">
+        <div class="grid" style="grid-template-columns:minmax(0,1fr);margin-bottom:14px">
+          <div class="card">
+            <div class="ch">
+              <span class="cico" style="--cb2:var(--warning-soft);--cc2:var(--warning)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 2 4 14 12 14 11 22 20 10 12 10 13 2"/></svg></span>
+              <div><h3>Reminder workflows</h3><p>Automated journeys running across all branches</p></div>
+              <div class="rt"><span class="chip ok" id="autoOnCount">6 of 6 active</span></div>
+            </div>
+            <div class="cb" id="wfList">
+
+              <div class="wf" data-wf="24h">
+                <div class="top">
+                  <span class="wfic" style="--wb:var(--brand-soft);--wc:var(--brand-2)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
+                  <div class="tx"><b>24-Hour Reminder</b><span>Nudge patients a day before the scheduled slot</span><span class="chip info">24 hours before appointment</span></div>
+                  <label class="sw"><input type="checkbox" class="wfsw" checked><i></i></label>
+                </div>
+                  <div class="sent"><b class="num">4,182</b><span>SENT THIS MONTH · 98.1%</span><div class="sbar"><i style="width:98%"></i></div></div>
+                <div class="bot">
+                  <div class="ctrl"><span class="k">Channels</span>
+                    <label class="cbx"><input type="checkbox" checked> SMS</label>
+                    <label class="cbx"><input type="checkbox" checked> WhatsApp</label>
+                    <label class="cbx"><input type="checkbox" checked> Email</label>
+                    <label class="cbx"><input type="checkbox"> Push</label>
+                  </div>
+                  <div class="ctrl"><span class="k">Send</span>
+                    <input class="fld" type="number" value="24" min="1">
+                    <select class="fld"><option>hrs before</option><option>min before</option><option>days before</option></select>
+                  </div>
+                  <div class="ctrl"><span class="k">Retries</span>
+                    <select class="fld"><option>0</option><option selected>2</option><option>3</option></select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="wf" data-wf="2h">
+                <div class="top">
+                  <span class="wfic" style="--wb:var(--info-soft);--wc:var(--info)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+                  <div class="tx"><b>2-Hour Reminder</b><span>Last-mile nudge with token number and directions</span><span class="chip info">2 hours before appointment</span></div>
+                  <label class="sw"><input type="checkbox" class="wfsw" checked><i></i></label>
+                </div>
+                  <div class="sent"><b class="num">3,940</b><span>SENT THIS MONTH · 96.4%</span><div class="sbar"><i style="width:96%"></i></div></div>
+                <div class="bot">
+                  <div class="ctrl"><span class="k">Channels</span>
+                    <label class="cbx"><input type="checkbox" checked> SMS</label>
+                    <label class="cbx"><input type="checkbox" checked> WhatsApp</label>
+                    <label class="cbx"> <input type="checkbox"> Email</label>
+                    <label class="cbx"><input type="checkbox" checked> Push</label>
+                  </div>
+                  <div class="ctrl"><span class="k">Send</span>
+                    <input class="fld" type="number" value="2" min="1">
+                    <select class="fld"><option>hrs before</option><option>min before</option><option>days before</option></select>
+                  </div>
+                  <div class="ctrl"><span class="k">Retries</span>
+                    <select class="fld"><option>0</option><option selected>1</option><option>2</option></select>
+                  </div>
+                </div>
+              </div>
+
+                            <div class="wf" data-wf="session">
+                <div class="top">
+                  <label class="sw"><input type="checkbox" class="wfsw" checked><i></i></label>
+                  <span class="wfic" style="--wb:var(--success-soft);--wc:var(--success)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span>
+                  <div class="tx"><b>Treatment Session Reminder</b><span>Next session date &amp; time for recurring care</span></div>
+                  <span class="chip info">12 hours before session</span>
+                  <div class="sent"><b class="num">2,318</b><span>SENT THIS MONTH · 97.2%</span><div class="sbar"><i style="width:97%"></i></div></div>
+                </div>
+                <div class="bot">
+                  <div class="ctrl"><span class="k">Channels</span>
+                    <label class="cbx"><input type="checkbox" checked> SMS</label>
+                    <label class="cbx"><input type="checkbox" checked> WhatsApp</label>
+                    <label class="cbx"><input type="checkbox"> Email</label>
+                    <label class="cbx"><input type="checkbox" checked> Push</label>
+                  </div>
+                  <div class="ctrl"><span class="k">Send</span>
+                    <input class="fld" type="number" value="12" min="1">
+                    <select class="fld"><option>hrs before</option><option>min before</option><option>days before</option></select>
+                  </div>
+                  <div class="ctrl"><span class="k">Retries</span>
+                    <select class="fld"><option>0</option><option selected>2</option><option>3</option></select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="wf" data-wf="missed">
+                <div class="top">
+                  <span class="wfic" style="--wb:var(--danger-soft);--wc:var(--danger)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg></span>
+                  <div class="tx"><b>Missed Appointment</b><span>Re-engage no-shows with a one-tap rebooking link</span><span class="chip warn">30 minutes after missed slot</span></div>
+                  <label class="sw"><input type="checkbox" class="wfsw" checked><i></i></label>
+                </div>
+                  <div class="sent"><b class="num">386</b><span>SENT THIS MONTH · 91.7%</span><div class="sbar"><i style="width:92%"></i></div></div>
+                <div class="bot">
+                  <div class="ctrl"><span class="k">Channels</span>
+                    <label class="cbx"><input type="checkbox" checked> SMS</label>
+                    <label class="cbx"><input type="checkbox" checked> WhatsApp</label>
+                    <label class="cbx"><input type="checkbox"> Email</label>
+                    <label class="cbx"><input type="checkbox"> Push</label>
+                  </div>
+                  <div class="ctrl"><span class="k">Send</span>
+                    <input class="fld" type="number" value="30" min="1">
+                    <select class="fld"><option>min after</option><option>hrs after</option><option>days after</option></select>
+                  </div>
+                  <div class="ctrl"><span class="k">Retries</span>
+                    <select class="fld"><option>0</option><option selected>2</option><option>3</option></select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="wf" data-wf="followup">
+                <div class="top">
+                  <span class="wfic" style="--wb:var(--st-inconsult-bg);--wc:var(--st-inconsult)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></span>
+                  <div class="tx"><b>Follow-up Reminder</b><span>Dressing review cadence for chronic wound patients</span><span class="chip pur">14 days after last visit</span></div>
+                  <label class="sw"><input type="checkbox" class="wfsw" checked><i></i></label>
+                </div>
+                  <div class="sent"><b class="num">1,864</b><span>SENT THIS MONTH · 94.8%</span><div class="sbar"><i style="width:95%"></i></div></div>
+                <div class="bot">
+                  <div class="ctrl"><span class="k">Channels</span>
+                    <label class="cbx"><input type="checkbox"> SMS</label>
+                    <label class="cbx"><input type="checkbox" checked> WhatsApp</label>
+                    <label class="cbx"><input type="checkbox" checked> Email</label>
+                    <label class="cbx"><input type="checkbox"> Push</label>
+                  </div>
+                  <div class="ctrl"><span class="k">Send</span>
+                    <input class="fld" type="number" value="14" min="1">
+                    <select class="fld"><option>days after</option><option>hrs after</option><option>wks after</option></select>
+                  </div>
+                  <div class="ctrl"><span class="k">Retries</span>
+                    <select class="fld"><option selected>1</option><option>2</option><option>3</option></select>
+                  </div>
+                </div>
+              </div>
+
+
+
+
+
+              <div class="wf" data-wf="renewal">
+                <div class="top">
+                  <span class="wfic" style="--wb:var(--brand-soft);--wc:var(--brand-2)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 20.5a6 6 0 0 1-8.49-8.49l9-9a6 6 0 0 1 8.49 8.49z"/><line x1="8.5" y1="8.5" x2="15.5" y2="15.5"/></svg></span>
+                  <div class="tx"><b>Prescription Renewal</b><span>Antibiotic and dressing supply running out</span><span class="chip pur">5 days before course ends</span></div>
+                  <label class="sw"><input type="checkbox" class="wfsw" checked><i></i></label>
+                </div>
+                  <div class="sent"><b class="num">928</b><span>SENT THIS MONTH · 93.5%</span><div class="sbar"><i style="width:94%"></i></div></div>
+                <div class="bot">
+                  <div class="ctrl"><span class="k">Channels</span>
+                    <label class="cbx"><input type="checkbox"> SMS</label>
+                    <label class="cbx"><input type="checkbox" checked> WhatsApp</label>
+                    <label class="cbx"><input type="checkbox" checked> Email</label>
+                    <label class="cbx"><input type="checkbox" checked> Push</label>
+                  </div>
+                  <div class="ctrl"><span class="k">Send</span>
+                    <input class="fld" type="number" value="5" min="1">
+                    <select class="fld"><option>days before</option><option>hrs before</option><option>wks before</option></select>
+                  </div>
+                  <div class="ctrl"><span class="k">Retries</span>
+                    <select class="fld"><option>0</option><option selected>2</option><option>3</option></select>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="grid g-2">
+          <div class="card">
+            <div class="ch" style="--cb2:var(--st-inconsult-bg);--cc2:var(--st-inconsult)">
+              <span class="cico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>
+              <div><h3>Quiet hours</h3><p>Hold non-urgent messages overnight</p></div>
+              <div class="rt"><label class="sw"><input type="checkbox" id="qhSw" checked><i></i></label></div>
+            </div>
+            <div class="cb">
+              <div style="display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap">
+                <div style="flex:1;min-width:120px"><span class="lbl">From</span><input class="fld qhf" id="qhFrom" type="time" value="21:30"></div>
+                <div style="flex:1;min-width:120px"><span class="lbl">To</span><input class="fld qhf" id="qhTo" type="time" value="08:00"></div>
+                <div style="flex:1;min-width:130px"><span class="lbl">Time zone</span><select class="fld qhf"><option>IST (UTC +5:30)</option></select></div>
+              </div>
+              <div class="qhleg">
+                <span><i class="qc"></i> Quiet hours (messages held)</span>
+                <span><i class="qc off"></i> Normal delivery window</span>
+              </div>
+              <div class="qhbar" id="qhBar" title="Quiet window · 21:30 to 08:00. Held messages release at 08:00">
+                <i style="left:0;width:33.4%"></i>
+                <i style="left:89.6%;width:10.4%"></i>
+              </div>
+              <div class="qhscale">
+                <span style="left:0%">12 AM</span>
+                <span style="left:25%">6 AM</span>
+                <span style="left:50%">12 PM</span>
+                <span style="left:75%">6 PM</span>
+                <span style="left:100%">12 AM</span>
+              </div>
+              <p id="qhNote" style="font-size:11.5px;color:var(--ink-2);margin-top:12px;display:flex;gap:8px;align-items:flex-start">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;margin-top:2px;color:var(--st-inconsult)"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                <span id="qhNoteTxt">Non-urgent messages queued during quiet hours are held and released at 08:00 IST. Cancellations, refunds and OTPs are always delivered immediately.</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="ch" style="--cb2:var(--info-soft);--cc2:var(--info)">
+              <span class="cico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></span>
+              <div><h3>Automation impact</h3><p>Last 30 days across 6 workflows</p></div>
+            </div>
+            <div class="cb">
+              <div class="impgrid">
+                <div class="imp" style="--ib:var(--brand-soft);--ic:var(--brand-2)">
+                  <span class="iic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></span>
+                  <b class="num">11,942</b><span>Messages automated</span>
+                </div>
+                <div class="imp" style="--ib:var(--success-soft);--ic:var(--success)">
+                  <span class="iic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/></svg></span>
+                  <b class="num">−31%</b><span>No-show rate</span>
+                </div>
+                <div class="imp" style="--ib:var(--st-inconsult-bg);--ic:var(--st-inconsult)">
+                  <span class="iic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></svg></span>
+                  <b class="num">3,112</b><span>Visits confirmed by reply</span>
+                </div>
+                <div class="imp" style="--ib:var(--info-soft);--ic:var(--info)">
+                  <span class="iic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>
+                  <b class="num">168</b><span>Held in quiet hours</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= TAB 3 · DELIVERY LOG ================= -->
+      <section class="view" id="v-log">
+
+                <div class="card">
+          <div class="filterbar">
+            <div class="f grow"><span class="lbl">Search</span><input class="fld" id="fSearch" placeholder="Patient, mobile or template"></div>
+
+            <div class="f drwrap" id="drWrap">
+              <span class="lbl">Date range</span>
+              <button type="button" class="drbtn" id="drBtn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="16" y1="2" x2="16" y2="6"/></svg>
+                <span id="drLabel"></span>
+              </button>
+              <div class="drpanel" id="drPanel">
+                <div class="drhead">
+                  <button type="button" class="drnav" id="drPrev"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+                  <b id="drMonthLabel"></b>
+                  <button type="button" class="drnav" id="drNext"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
+                </div>
+                <div class="drgrid drgridhead"><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span><span>Su</span></div>
+                <div class="drgrid" id="drGridBody"></div>
+                <div class="drfoot">
+                  <button type="button" class="btn btn-ghost" id="drCancel">Cancel</button>
+                  <button type="button" class="btn btn-primary" id="drApply">Apply</button>
+                </div>
+              </div>
+              <input type="hidden" id="fFrom" value="2026-08-12">
+              <input type="hidden" id="fTo" value="2026-08-13">
+            </div>
+
+            <div class="f fsel" id="chanWrap">
+              <span class="lbl">Channel</span>
+              <button type="button" class="fselbtn" id="chanBtn"></button>
+              <div class="fselpanel" id="chanPanel"></div>
+              <input type="hidden" id="fChan">
+            </div>
+
+            <div class="f fsel" id="statWrap">
+              <span class="lbl">Status</span>
+              <button type="button" class="fselbtn" id="statBtn"></button>
+              <div class="fselpanel" id="statPanel"></div>
+              <input type="hidden" id="fStat">
+            </div>
+          </div>
+
+          <div style="overflow-x:auto">
+            <table class="tbl">
+              <thead><tr><th>Time</th><th>Patient</th><th>Channel</th><th>Template</th><th>Status</th><th>Attempts</th><th>Reason</th><th>Action</th></tr></thead>
+              <tbody id="logBody">
+                <tr data-date="2026-08-13" data-ch="wa" data-st="Delivered"><td><b>11:42 AM</b><span class="s">13 Aug 2026</span></td><td><b>Meera Suresh</b><span class="s">+91 98490 21734</span></td><td><span class="cch" style="--cb:var(--success-soft);--cc:var(--success)">WhatsApp</span></td><td>Appointment Reminder</td><td><span class="chip ok">Delivered</span></td><td class="num">1</td><td style="color:var(--ink-muted);font-size:11.5px">Read 11:44 AM</td><td><span style="color:var(--ink-muted)">—</span></td></tr>
+                <tr data-date="2026-08-13" data-ch="sms" data-st="Delivered"><td><b>11:30 AM</b><span class="s">13 Aug 2026</span></td><td><b>Anil Kumar Reddy</b><span class="s">+91 99632 40118</span></td><td><span class="cch" style="--cb:var(--info-soft);--cc:var(--info)">SMS</span></td><td>Appointment Confirmation</td><td><span class="chip ok">Delivered</span></td><td class="num">1</td><td style="color:var(--ink-muted);font-size:11.5px">DLT header AWHCLN</td><td><span style="color:var(--ink-muted)">—</span></td></tr>
+                <tr data-date="2026-08-13" data-ch="wa" data-st="Failed"><td><b>11:08 AM</b><span class="s">13 Aug 2026</span></td><td><b>Fatima Begum</b><span class="s">+91 90000 12345</span></td><td><span class="cch" style="--cb:var(--success-soft);--cc:var(--success)">WhatsApp</span></td><td>Prescription Ready</td><td><span class="chip bad">Failed</span></td><td class="num">3</td><td style="color:var(--danger);font-size:11.5px;font-weight:600">Invalid number</td><td style="white-space:nowrap"><button class="mini act-retry">Retry</button> <button class="mini act-fu">Follow up</button></td></tr>
+                <tr data-date="2026-08-13" data-ch="email" data-st="Delivered"><td><b>10:54 AM</b><span class="s">13 Aug 2026</span></td><td><b>Ravi Teja Varma</b><span class="s">ravi.varma@gmail.com</span></td><td><span class="cch" style="--cb:var(--st-inconsult-bg);--cc:var(--st-inconsult)">Email</span></td><td>Lab Report Notification</td><td><span class="chip ok">Delivered</span></td><td class="num">1</td><td style="color:var(--ink-muted);font-size:11.5px">Opened 11:02 AM</td><td><span style="color:var(--ink-muted)">—</span></td></tr>
+                <tr data-date="2026-08-13" data-ch="sms" data-st="Failed"><td><b>10:37 AM</b><span class="s">13 Aug 2026</span></td><td><b>Sunitha Rao</b><span class="s">+91 98851 66290</span></td><td><span class="cch" style="--cb:var(--info-soft);--cc:var(--info)">SMS</span></td><td>Reschedule Notice</td><td><span class="chip bad">Failed</span></td><td class="num">2</td><td style="color:var(--danger);font-size:11.5px;font-weight:600">Template not approved</td><td style="white-space:nowrap"><button class="mini act-retry">Retry</button> <button class="mini act-fu">Follow up</button></td></tr>
+                <tr data-date="2026-08-13" data-ch="wa" data-st="Delivered"><td><b>10:15 AM</b><span class="s">13 Aug 2026</span></td><td><b>Imran Qureshi</b><span class="s">+91 97045 88123</span></td><td><span class="cch" style="--cb:var(--success-soft);--cc:var(--success)">WhatsApp</span></td><td>Follow-up Reminder</td><td><span class="chip ok">Delivered</span></td><td class="num">1</td><td style="color:var(--ink-muted);font-size:11.5px">Replied BOOK</td><td><span style="color:var(--ink-muted)">—</span></td></tr>
+                <tr data-date="2026-08-13" data-ch="push" data-st="Sent"><td><b>09:48 AM</b><span class="s">13 Aug 2026</span></td><td><b>Lakshmi Narayanan</b><span class="s">+91 93470 55621</span></td><td><span class="cch" style="--cb:var(--warning-soft);--cc:var(--warning)">Push</span></td><td>2-Hour Reminder</td><td><span class="chip info">Sent</span></td><td class="num">1</td><td style="color:var(--ink-muted);font-size:11.5px">Awaiting device ack</td><td><span style="color:var(--ink-muted)">—</span></td></tr>
+                <tr data-date="2026-08-12" data-ch="email" data-st="Delivered"><td><b>07:12 PM</b><span class="s">12 Aug 2026</span></td><td><b>Padmaja Iyer</b><span class="s">padmaja.iyer@outlook.com</span></td><td><span class="cch" style="--cb:var(--st-inconsult-bg);--cc:var(--st-inconsult)">Email</span></td><td>Appointment Confirmation</td><td><span class="chip ok">Delivered</span></td><td class="num">1</td><td style="color:var(--ink-muted);font-size:11.5px">Opened 07:40 PM</td><td><span style="color:var(--ink-muted)">—</span></td></tr>
+                <tr data-date="2026-08-12" data-ch="sms" data-st="Delivered"><td><b>06:35 PM</b><span class="s">12 Aug 2026</span></td><td><b>Ganesh Bhandari</b><span class="s">+91 90140 77832</span></td><td><span class="cch" style="--cb:var(--info-soft);--cc:var(--info)">SMS</span></td><td>Cancellation</td><td><span class="chip ok">Delivered</span></td><td class="num">2</td><td style="color:var(--ink-muted);font-size:11.5px">Retried once (carrier busy)</td><td><span style="color:var(--ink-muted)">—</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="empty" id="logEmpty" style="display:none">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <b>No deliveries match these filters</b>
+            <span>Try widening the date range or clearing the channel and status filters.</span>
+          </div>
+
+          <div class="tfoot">
+            <span id="logCount">Showing 9 of 9 deliveries · 12–13 August 2026</span>
+            <span class="pager">
+              <button disabled>&lsaquo;</button>
+              <button class="on">1</button>
+              <button onclick="toast('Loading page 2 of the delivery log')">2</button>
+              <button onclick="toast('Loading page 3 of the delivery log')">3</button>
+              <button onclick="toast('Loading page 2 of the delivery log')">&rsaquo;</button>
+            </span>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<!-- ============ DRAWER ============ -->
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Template editor">
+  <div class="dh">
+    <div><h3 id="dTitle">New template</h3><p id="dSub">Write the message for one channel, then save</p></div>
+    <button class="close-btn" id="dClose" title="Close (Esc)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  </div>
+  <div class="db">
+    <div class="fgrp"><span class="lbl">Template name</span><input class="fld" id="dName" placeholder="e.g. Discharge Instructions"></div>
+    <div class="fgrp">
+      <span class="lbl">Channels</span>
+      <div class="msel" id="dChanSel">
+        <button type="button" class="msel-btn fld" id="dChanBtn">Select channels</button>
+        <div class="msel-menu" id="dChanMenu">
+          <label class="msel-opt"><input type="checkbox" value="wa"><span>WhatsApp</span></label>
+          <label class="msel-opt"><input type="checkbox" value="sms"><span>SMS</span></label>
+          <label class="msel-opt"><input type="checkbox" value="email"><span>Email</span></label>
+          <label class="msel-opt"><input type="checkbox" value="push"><span>Push</span></label>
+          <label class="msel-opt"><input type="checkbox" value="ivr"><span>IVR / Voice</span></label>
+        </div>
+      </div>
+    </div>
+    <div class="fgrp">
+      <span class="lbl">Editing message for</span>
+      <div class="varrow" id="dChanTabs"></div>
+    </div>
+    <div class="fgrp" style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+      <span class="lbl" style="margin-bottom:0">Active (sent to patients when triggered)</span>
+      <label class="sw"><input type="checkbox" id="dActive" checked><i></i></label>
+    </div>
+    <div class="fgrp" id="dSubjWrap"><span class="lbl">Subject line</span><input class="fld" id="dSubj"></div>
+    <div class="fgrp" id="emailHdrBand" style="display:none">
+      <div class="emailband hdr"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>Dr. KVNN's Advanced Wound Healing Clinics<span class="locktag">Locked · from clinic profile</span></div>
+      <div class="emailgreet">Dear {{patient_name}},</div>
+    </div>
+    <div class="fgrp" id="bodyFgrp">
+      <span class="lbl">Insert variable</span>
+      <div class="varrow" id="varRow">
+        <button class="varchip">{{patient_name}}</button>
+        <button class="varchip">{{doctor_name}}</button>
+        <button class="varchip">{{appointment_date}}</button>
+        <button class="varchip">{{appointment_time}}</button>
+        <button class="varchip">{{branch}}</button>
+        <button class="varchip">{{token_no}}</button>
+      </div>
+      <span class="lbl" id="bodyLbl">Message body</span>
+      <textarea class="fld" id="dBody"></textarea>
+      <div class="cnt2" id="dCount">0 characters</div>
+    </div>
+    <div class="fgrp" id="emailFtrBand" style="display:none">
+      <div class="emailband ftr">Warm regards,<br><b>Team Advanced Wound Healing</b><br>{{branch}}<span class="locktag">Locked footer · clinic contact &amp; compliance line, from Clinic Profile settings</span></div>
+    </div>
+    <div class="fgrp" id="dFootWrap"><span class="lbl">Footer text</span><input class="fld" id="dFoot"></div>
+  </div>
+  <div class="df">
+    <button class="btn btn-ghost" id="dCancel">Cancel</button>
+    <button class="btn btn-primary" id="dSave">Create template</button>
+  </div>
+</aside>
+
+<!-- ===== DEACTIVATION IMPACT / DEPENDENCY REVIEW MODAL · same .iscrim/.imodal pattern as
+     doctors-staff.html / counters-points.html / user-onboard.html ===== -->
+<div class="iscrim" id="iScrim">
+  <div class="imodal" role="dialog" aria-modal="true" aria-label="Deactivation impact review">
+    <div class="ih">
+      <span class="iic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>
+      <div><h3 id="iTitle">This template cannot be deactivated</h3></div>
+    </div>
+    <div class="ib">
+      <div id="iBody"></div>
+      <div class="ifoot-hint" id="iFootHint"></div>
+    </div>
+    <div class="if">
+      <button class="btn btn-ghost" id="iCancel">Cancel</button>
+      <button class="btn btn-danger" id="iContinue">Deactivate anyway</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script src="/js/notifications-reminders.js"></script>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a) return;
+    var href = a.getAttribute('href');
+    if (!href || /^https?:\/\//i.test(href) || href.indexOf('mailto:') === 0) return;
+    if (href.indexOf('.html') === -1) return;
+    e.preventDefault();
+    try {
+      window.parent.postMessage({ source: 'legacy-frame', type: 'navigate', href: href }, '*');
+    } catch (err) {
+      // no-op: if parent isn't reachable, do nothing rather than throw
+    }
+  }, true);
+})();
+</script>
+
+</body>
+</html>

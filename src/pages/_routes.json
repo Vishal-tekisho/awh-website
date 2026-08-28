@@ -1,0 +1,152 @@
+[
+  {
+    "route": "/",
+    "component": "Index",
+    "file": "index.html",
+    "redirectTo": "/admin-dashboard"
+  },
+  {
+    "route": "/login",
+    "component": "Login",
+    "file": "login.html",
+    "redirectTo": null
+  },
+  {
+    "route": "/admin-dashboard",
+    "component": "AdminDashboard",
+    "file": "admin-dashboard.html",
+    "redirectTo": null
+  },
+  {
+    "route": "/availability",
+    "component": "Availability",
+    "file": "availability.html",
+    "redirectTo": null
+  },
+  {
+    "route": "/clinic-branch",
+    "component": "ClinicBranch",
+    "file": "clinic-branch.html",
+    "redirectTo": null
+  },
+  {
+    "route": "/counters-points",
+    "component": "CountersPoints",
+    "file": "counters-points.html",
+    "redirectTo": null
+  },
+  {
+    "route": "/doctors-staff",
+    "component": "DoctorsStaff",
+    "file": "doctors-staff.html",
+    "redirectTo": null
+  },
+  {
+    "route": "/equipment-resources",
+    "component": "EquipmentResources",
+    "file": "equipment-resources.html",
+    "redirectTo": null
+  },
+  {
+    "route": "/knowledge-base",
+    "component": "KnowledgeBase",
+    "file": "knowledge-base.html",
+    "redirectTo": null
+  },
+  {
+    "route": "/notifications-reminders",
+    "component": "NotificationsReminders",
+    "file": "notifications-reminders.html",
+    "redirectTo": null
+  },
+  {
+    "route": "/packages-pricing",
+    "component": "PackagesPricing",
+    "file": "packages-pricing.html",
+    "redirectTo": null
+  },
+  {
+    "route": "/patient-fields",
+    "component": "PatientFields",
+    "file": "patient-fields.html",
+    "redirectTo": null
+  },
+  {
+    "route": "/reference-audit",
+    "component": "ReferenceAudit",
+    "file": "reference-audit.html",
+    "redirectTo": null
+  },
+  {
+    "route": "/resource-availability",
+    "component": "ResourceAvailability",
+    "file": "resource-availability.html",
+    "redirectTo": null
+  },
+  {
+    "route": "/roles-departments",
+    "component": "RolesDepartments",
+    "file": "roles-departments.html",
+    "redirectTo": null
+  },
+  {
+    "route": "/rooms-areas",
+    "component": "RoomsAreas",
+    "file": "rooms-areas.html",
+    "redirectTo": null
+  },
+  {
+    "route": "/roster-sessions",
+    "component": "RosterSessions",
+    "file": "roster-sessions.html",
+    "redirectTo": null
+  },
+  {
+    "route": "/services-consultation-types",
+    "component": "ServicesConsultationTypes",
+    "file": "services-consultation-types.html",
+    "redirectTo": null
+  },
+  {
+    "route": "/treatments-procedures",
+    "component": "TreatmentsProcedures",
+    "file": "treatments-procedures.html",
+    "redirectTo": null
+  },
+  {
+    "route": "/user-onboard",
+    "component": "UserOnboard",
+    "file": "user-onboard.html",
+    "redirectTo": null
+  },
+  {
+    "route": "/slots-queue-rules",
+    "component": "SlotsQueueRules",
+    "file": "slots-queue-rules.html",
+    "redirectTo": null
+  },
+  {
+    "route": "/emr-templates",
+    "component": "EmrTemplates",
+    "file": "emr-templates.html",
+    "redirectTo": null
+  },
+  {
+    "route": "/medication-config",
+    "component": "MedicationConfig",
+    "file": "medication-config.html",
+    "redirectTo": null
+  },
+  {
+    "route": "/orders-care-plans",
+    "component": "OrdersCarePlans",
+    "file": "orders-care-plans.html",
+    "redirectTo": null
+  },
+  {
+    "route": "/clinical-support-masters",
+    "component": "ClinicalSupportMasters",
+    "file": "clinical-support-masters.html",
+    "redirectTo": null
+  }
+]

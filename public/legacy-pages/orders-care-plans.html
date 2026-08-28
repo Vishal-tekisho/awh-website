@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<title>Clinical Orders &amp; Care Plans · AWH Admin Control Center</title>
+<link rel="stylesheet" href="/css/orders-care-plans.css">
+</head>
+<body>
+
+<div class="app">
+  <aside class="side">
+    <div class="brand">
+      <span class="lg"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M10 3h4a1 1 0 0 1 1 1v5h5a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-5v5a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-5H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h5V4a1 1 0 0 1 1-1z"/></svg></span>
+      <div><b>Advanced Wound Healing</b><span>P01 · Clinic Admin</span></div>
+    </div>
+
+    <div class="navgroup">Dashboard</div>
+    <nav class="nav">
+      <a href="admin-dashboard.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span> <span class="lbltxt">Setup Readiness</span></a>
+    </nav>
+
+    <div class="navgroup">Clinic Setup</div>
+    <nav class="nav">
+      <a href="clinic-branch.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg></span> <span class="lbltxt">Clinic &amp; Branches</span></a>
+      <a href="roles-departments.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></span> <span class="lbltxt">Departments &amp; Units</span></a>
+      <a href="rooms-areas.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21"/></svg></span> <span class="lbltxt">Rooms &amp; Care Areas</span></a>
+      <a href="counters-points.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></span> <span class="lbltxt">Counters &amp; Service Points</span></a>
+      <a href="equipment-resources.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06A1.65 1.65 0 0 0 15 19.4a1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15H4a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 5.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span> <span class="lbltxt">Resources &amp; Equipment</span></a>
+    </nav>
+
+    <div class="navgroup">Clinical Catalogue</div>
+    <nav class="nav">
+      <a href="services-consultation-types.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg></span> <span class="lbltxt">Services &amp; Consultation Types</span> <span class="ct bad">297</span></a>
+      <a href="treatments-procedures.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg></span> <span class="lbltxt">Treatments &amp; Procedures</span></a>
+      <a href="packages-pricing.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></span> <span class="lbltxt">Packages &amp; Reference Pricing</span></a>
+    </nav>
+
+    <div class="navgroup">People &amp; Access</div>
+    <nav class="nav">
+      <a href="doctors-staff.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span> <span class="lbltxt">Doctors &amp; Staff</span></a>
+      <a href="roster-sessions.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span> <span class="lbltxt">Doctor Sessions &amp; Staff Rosters</span> <span class="ct warn">3</span></a>
+      <a href="user-onboard.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span> <span class="lbltxt">Users, Roles &amp; Permissions</span> <span class="ct warn">2</span></a>
+    </nav>
+
+    <div class="navgroup">Scheduling Rules</div>
+    <nav class="nav">
+      <a href="availability.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg></span> <span class="lbltxt">Calendars &amp; Availability</span></a>
+      <a href="resource-availability.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg></span> <span class="lbltxt">Resource Availability</span></a>
+      <a href="slots-queue-rules.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span> <span class="lbltxt">Slots, Capacity, Booking &amp; Queue Rules</span></a>
+    </nav>
+
+    <div class="navgroup">Patient &amp; EMR Configuration</div>
+    <nav class="nav">
+      <a href="patient-fields.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span> <span class="lbltxt">Patient Fields, Identity &amp; Consent</span></a>
+      <a href="emr-templates.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12h6M9 16h6M9 8h6"/><rect x="4" y="3" width="16" height="18" rx="2"/></svg></span> <span class="lbltxt">EMR Templates &amp; Clinical Metrics</span></a>
+      <a href="medication-config.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 20.5a6 6 0 0 1-8.49-8.49l9-9a6 6 0 0 1 8.49 8.49z"/><line x1="8.5" y1="8.5" x2="15.5" y2="15.5"/></svg></span> <span class="lbltxt">Medication &amp; Prescription</span></a>
+      <a class="on" href="orders-care-plans.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span> <span class="lbltxt">Clinical Orders &amp; Care Plans</span></a>
+    </nav>
+
+    <div class="navgroup">Clinical Support Masters</div>
+    <nav class="nav">
+      <a href="clinical-support-masters.html#lab"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3v6l-5 9a2 2 0 0 0 1.7 3h12.6a2 2 0 0 0 1.7-3l-5-9V3"/><line x1="8" y1="3" x2="16" y2="3"/></svg></span> <span class="lbltxt">Laboratory</span></a>
+      <a href="clinical-support-masters.html#pharm"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg></span> <span class="lbltxt">Pharmacy Reference</span></a>
+      <a href="clinical-support-masters.html#inv"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg></span> <span class="lbltxt">Inventory &amp; Stores</span></a>
+      <a href="clinical-support-masters.html#bed"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg></span> <span class="lbltxt">Lightweight Stay</span></a>
+    </nav>
+
+    <div class="navgroup">Reference Masters &amp; Audit</div>
+    <nav class="nav">
+      <a href="reference-audit.html#ref"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></span> <span class="lbltxt">Reference Values</span></a>
+      <a href="reference-audit.html#ids"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/></svg></span> <span class="lbltxt">Identifier Rules</span></a>
+      <a href="reference-audit.html#lifecycle"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></span> <span class="lbltxt">Configuration Lifecycle</span></a>
+      <a href="reference-audit.html#audit"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span> <span class="lbltxt">Audit History</span></a>
+    </nav>
+
+    <div class="navgroup">Engagement &amp; System</div>
+    <nav class="nav">
+      <a href="notifications-reminders.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></span> <span class="lbltxt">Notifications &amp; Reminders</span></a>
+      <a href="knowledge-base.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span> <span class="lbltxt">Knowledge Base</span> <span class="ct warn">1</span></a>
+    </nav>
+
+    <div class="sync"><span class="live"><i></i> Live</span> · synced just now</div>
+    <div class="user">
+      <span class="av">RM</span>
+      <div class="utxt"><b>Rajeev Malhotra</b><span>Hospital Administrator</span></div>
+      <a class="lout" href="login.html" title="Sign out"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></a>
+    </div>
+  </aside>
+
+  <div class="main">
+    <div class="content">
+      <div class="wsbar">
+        <div class="htitle">
+          <h1>Clinical Orders &amp; Care Plans</h1>
+          <p>Order type &amp; care plan template catalogue, lifecycle behavior and transition rules</p>
+        </div>
+        <span class="sp"></span>
+        <div class="toast" id="toast"></div>
+      </div>
+
+      <div class="wsgrid three">
+  <div class="wsside">
+    <div class="mseg" id="tabSeg">
+      <button type="button" class="on" data-t="order">Order Types</button>
+      <button type="button" data-t="plan">Care Plan Templates</button>
+    </div>
+    <div class="filterbar">
+      <div class="f grow"><input type="text" class="fld" id="oSearch" placeholder="Search..."></div>
+    </div>
+    <div class="card" style="margin-bottom:14px; border:none; box-shadow:none">
+      <ul style="list-style:none; padding:0; margin:0;" id="tList">
+        <li style="padding:10px 14px; border-bottom:1px solid var(--line); font-size:13px; cursor:pointer;" class="active"><b>Treatment Order</b><br><span style="color:var(--ink-muted)">Active</span></li>
+        <li style="padding:10px 14px; border-bottom:1px solid var(--line); font-size:13px; cursor:pointer;"><b>Laboratory Order</b><br><span style="color:var(--ink-muted)">Active</span></li>
+      </ul>
+      <div class="df" style="border:none"><button type="button" class="btn primary" id="newBtn" style="width:100%">+ Add Order Type</button></div>
+    </div>
+  </div>
+  
+  <div class="wsmain">
+    <div class="card" style="height:100%;">
+      <div class="dh"><h3>Configuration</h3></div>
+      <div class="db" style="padding:24px" id="configForm">
+        <!-- Editor Fields injected by JS -->
+      </div>
+      <div id="validationSummary" style="display:none; padding:12px 24px; background:var(--surface-2); border-top:1px solid var(--line);">
+        <b style="display:block; margin-bottom:8px">Validation Rules</b>
+        <div id="valList" style="font-size:13px; line-height:1.6"></div>
+      </div>
+      <div class="df" style="position:sticky; bottom:0; background:var(--surface); z-index:10; border-top:1px solid var(--line)">
+        <button type="button" class="btn" id="dSaveDraft">Save Draft</button>
+        <button type="button" class="btn" id="btnPreviewSched" style="display:none">Preview Schedule</button>
+        <div style="flex:1"></div>
+        <button type="button" class="btn" id="btnValidate" onclick="this.parentElement.previousElementSibling.style.display='block';this.parentElement.previousElementSibling.querySelector('#valList').innerHTML='<span style=\'color:var(--success)\'>✓ Required fields present</span><br><span style=\'color:var(--success)\'>✓ No conflicting configurations</span><br><span style=\'color:var(--success)\'>✓ Hard dependencies met</span>';document.getElementById('dSave').disabled=false;">Validate</button>
+        <button type="button" class="btn primary" id="dSave" disabled>Publish</button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="wsside">
+    <div class="card" id="orderLifecycleCard">
+      <div class="dh"><h3>Order flow &amp; Lifecycle</h3><button type="button" class="btn" id="configTransBtn">Rules</button></div>
+      <div id="lifecycleFlow" style="padding:16px;"></div>
+      <div id="lifecycleBranch"></div>
+      <div id="lifecycleLegend"></div>
+    </div>
+    <div class="card" id="planLifecycleCard" style="display:none">
+      <div class="dh"><h3>Care Plan Preview</h3></div>
+      <div id="planFlow" style="padding:16px; font-size:13px; max-height:400px; overflow-y:auto">
+         <b>WEEK 1</b><br>
+         Day 1: Dressing<br>
+         Day 4: Dressing<br>
+         Day 7: Dressing + Review<br><br>
+         <b>WEEK 2</b><br>
+         Day 10: Dressing<br>
+         Day 13: Dressing<br>
+         Day 14: Doctor Review<br>
+         <br><br>
+         Estimated Sessions: <b>10</b><br>
+         Review Checkpoints: <b>Session 3, 6, 10</b><br>
+         <div class="note warn" style="margin-top:10px">⚠ Preview Only. Actual timing depends on live availability.</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="scrim" id="scrim"></div>
+        <div class="scrim" id="depScrim" style="display:none; z-index:999"></div>
+  <div class="drawer" id="depDrawer" style="display:none; z-index:1000; width:450px; right:0">
+    <div class="dh">
+      <h3>Deactivate Configuration</h3>
+      <button type="button" class="x" onclick="document.getElementById('depScrim').style.display='none';document.getElementById('depDrawer').style.display='none'">×</button>
+    </div>
+    <div class="db">
+      <div class="note warn" style="margin-bottom:16px"><b>Warning: Active Dependencies</b><br>This configuration is currently used by <b id="depCount">8</b> future sessions/records. Deactivating it may disrupt workflows.</div>
+      <label>Affected Areas</label>
+      <table class="tbl mini" style="margin-bottom:16px">
+        <thead><tr><th>Dependency Type</th><th>Impact</th></tr></thead>
+        <tbody id="depBody">
+          <tr><td>Upcoming Appointments</td><td>4 active bookings missing required metric</td></tr>
+          <tr><td>Care Plans</td><td>2 active care plans referencing this order</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="df">
+      <button type="button" class="btn" onclick="document.getElementById('depScrim').style.display='none';document.getElementById('depDrawer').style.display='none'">Cancel</button>
+      <button type="button" class="btn primary" style="background:var(--danger);border-color:var(--danger)" id="btnForceDeactivate">Force Deactivate</button>
+    </div>
+  </div>
+<div class="drawer" id="drawer">
+        <div class="dh">
+          <h3 id="dTitle">Add order type</h3>
+          <p id="dSub"></p>
+          <button type="button" class="x" id="dClose">×</button>
+        </div>
+        <div class="db">
+          <div id="dMetaWrap" style="display:none"><span id="dMeta"></span></div>
+          <label id="dNameLbl">Order type name</label>
+          <input type="text" class="fld" id="dName">
+
+          <div id="orderOnlyGroup">
+            <label>Code</label><input type="text" class="fld" id="dCode">
+            <label>Category</label>
+            <div class="mseg" id="dCatSeg"><button type="button" data-v="lab" class="on">Lab</button><button type="button" data-v="imaging">Imaging</button><button type="button" data-v="procedure">Procedure</button><button type="button" data-v="referral">Referral</button></div>
+            <label>Priority</label>
+            <div class="mseg" id="dPrioSeg"><button type="button" data-v="routine" class="on">Routine</button><button type="button" data-v="urgent">Urgent</button><button type="button" data-v="stat">STAT</button></div>
+            <label><input type="checkbox" id="dClinIndication"> Requires clinical indication</label>
+            <label>Diagnosis link</label><select class="fld" id="dDiagLink"><option value="optional">Optional</option><option value="required">Required</option></select>
+            <label><input type="checkbox" id="dBodySite"> Requires body site</label>
+            <label><input type="checkbox" id="dLaterality"> Requires laterality</label>
+            <label>Requested date</label>
+            <div class="mseg" id="dReqDateSeg"><button type="button" data-v="exact" class="on">Exact date</button><button type="button" data-v="range">Date range</button></div>
+            <label>Session count</label><input type="number" class="fld" id="dSessionCount">
+            <label>Frequency</label><input type="text" class="fld" id="dFrequency">
+            <label>Preparation instructions</label><textarea class="fld" id="dPrepInstructions"></textarea>
+            <label>Preferred performer</label><select class="fld" id="dPrefPerformer"><option value="any">Any</option></select>
+            <label>Preferred location</label><select class="fld" id="dPrefLocation"><option value="any">Any</option></select>
+            <label>Followup</label><select class="fld" id="dFollowup"><option value="none">None</option><option value="required">Required</option></select>
+            <label><input type="checkbox" id="dDoctorSignoff"> Requires doctor signoff</label>
+            <label>Scheduling behavior</label><input type="text" class="fld" id="dSchedBehavior">
+            <label><input type="checkbox" id="dSchedCreatePending"> Create pending appointment</label>
+            <label><input type="checkbox" id="dSchedRecurringPreview"> Show recurring preview</label>
+            <label><input type="checkbox" id="dSchedManualRequired"> Manual scheduling required</label>
+            <label><input type="checkbox" id="dSchedRequireValidation"> Require validation before booking</label>
+            <button type="button" class="btn" id="dOpenTransFromDrawer">Configure transition rules</button>
+          </div>
+
+          <div id="planOnlyGroup" style="display:none">
+            <label>Applicable diagnoses</label><input type="text" class="fld" id="dApplicableDx">
+            <label>Activities</label><textarea class="fld" id="dActivities"></textarea>
+            <label>Goals</label><textarea class="fld" id="dGoals"></textarea>
+            <label>Default frequency</label><input type="text" class="fld" id="dDefFrequency">
+            <label>Default duration</label><input type="text" class="fld" id="dDefDuration">
+            <label>Plan session count</label><input type="number" class="fld" id="dPlanSessionCount">
+            <label>Frequency &amp; duration</label><input type="text" class="fld" id="dFreqDur">
+            <label>Review cycle</label><input type="text" class="fld" id="dReview">
+            <label><input type="checkbox" id="dPlanDoctorSignoff"> Requires doctor signoff</label>
+            <label>Session generation behavior</label>
+            <select class="fld" id="dSchedGenBehavior"><option value="allsessions">Generate all sessions</option><option value="rolling">Rolling window</option></select>
+            <label>Capacity policy</label><input type="text" class="fld" id="dCapPolicy">
+          </div>
+
+          <label>Status</label>
+          <select class="fld" id="dStatusSelect"></select>
+        </div>
+        <div id="validationSummary" style="display:none; padding:12px 24px; background:var(--surface-2); border-top:1px solid var(--line);">
+          <b style="display:block; margin-bottom:8px">Validation Rules</b>
+          <div id="valList" style="font-size:13px; line-height:1.6"></div>
+        </div>
+        <div class="df" style="position:sticky; bottom:0; background:var(--surface); z-index:10">
+          <button type="button" class="btn" id="dCancel" onclick="document.getElementById('scrim').style.display='none';document.getElementById('drawer').className='drawer'">Cancel</button>
+          <div style="flex:1"></div>
+          <button type="button" class="btn" id="dSaveDraft">Save Draft</button>
+          <button type="button" class="btn" id="btnValidate" onclick="this.parentElement.previousElementSibling.style.display='block';this.parentElement.previousElementSibling.querySelector('#valList').innerHTML='<span style=\'color:var(--success)\'>✓ Required fields present</span><br><span style=\'color:var(--success)\'>✓ No conflicting configurations</span><br><span style=\'color:var(--success)\'>✓ Hard dependencies met</span>';document.getElementById('dSave').disabled=false;">Validate</button>
+          <button type="button" class="btn primary" id="dSave" disabled>Publish</button>
+        </div>
+      </div>
+
+      <div class="scrim" id="transScrim"></div>
+      <div class="drawer" id="transDrawer">
+        <div class="dh">
+          <h3>Configure status transitions</h3>
+          <button type="button" class="x" id="transClose">×</button>
+        </div>
+        <div class="db">
+          <div id="transList"></div>
+        </div>
+        <div class="df">
+          <button type="button" class="btn" id="transCancel">Cancel</button>
+          <button type="button" class="btn primary" id="transSave">Save</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="/js/orders-care-plans.js"></script>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a) return;
+    var href = a.getAttribute('href');
+    if (!href || /^https?:\/\//i.test(href) || href.indexOf('mailto:') === 0) return;
+    if (href.indexOf('.html') === -1) return;
+    e.preventDefault();
+    try {
+      window.parent.postMessage({ source: 'legacy-frame', type: 'navigate', href: href }, '*');
+    } catch (err) {
+      // no-op: if parent isn't reachable, do nothing rather than throw
+    }
+  }, true);
+})();
+</script>
+
+</body>
+</html>

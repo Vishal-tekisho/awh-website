@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en" data-brand="green">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Doctor Sessions &amp; Staff Rosters · AWH Clinic Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<!--
+  P01 CLINIC ADMIN · Screen 08 · Roster & Doctor Sessions  (nav group: People & Access)
+  CONTENT sourced from KVNN_UI_Delivery_Plan4.xlsx row 8 + BRD epic 02.3.
+  xlsx row 8: "Week/month roster grid by doctor; recurring session builder (days, start/end,
+  room, service); exception & leave drawer; substitute picker; conflict banner."
+  States: Normal; Leave; Temporary block; Conflict.
+
+  Real doctors match doctors-staff.html exactly: Dr. KVNN Santosh Murthy and Dr. Hrishikesh
+  Korada have sessions (they carry 16 and 3 mapped services per the xlsx). Dr. Harsh Atul,
+  Dr. Raghavendra and Dr. Sameera are deliberately rostered with ZERO sessions · this is the
+  same "3 doctors without a roster, cannot be booked" fact already shown on the Config &
+  Readiness dashboard and flagged as "Missing mapping" on Doctors & Staff. All three screens
+  now agree on the same 3 names/count instead of each inventing its own example.
+  Room names and exact service labels are not given in any source doc · generic placeholders,
+  consistent with the doctor's real specialty/department only.
+-->
+<link rel="stylesheet" href="/css/roster-sessions.css">
+</head>
+<body>
+
+<div class="app">
+  <!-- ============ SIDEBAR · P01 Clinic Admin nav, "Doctor Sessions & Staff Rosters" active ============ -->
+  <aside class="side">
+    <div class="brand">
+      <span class="lg"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M10 3h4a1 1 0 0 1 1 1v5h5a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-5v5a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-5H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h5V4a1 1 0 0 1 1-1z"/></svg></span>
+      <div><b>Advanced Wound Healing</b><span>P01 · Clinic Admin</span></div>
+    </div>
+
+    <div class="navgroup">Dashboard</div>
+    <nav class="nav">
+      <a href="admin-dashboard.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span> <span class="lbltxt">Setup Readiness</span></a>
+    </nav>
+
+    <div class="navgroup">Clinic Setup</div>
+    <nav class="nav">
+      <a href="clinic-branch.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg></span> <span class="lbltxt">Clinic &amp; Branches</span></a>
+      <a href="roles-departments.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></span> <span class="lbltxt">Departments &amp; Units</span></a>
+      <a href="rooms-areas.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21"/></svg></span> <span class="lbltxt">Rooms &amp; Care Areas</span></a>
+      <a href="counters-points.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></span> <span class="lbltxt">Counters &amp; Service Points</span></a>
+      <a href="equipment-resources.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06A1.65 1.65 0 0 0 15 19.4a1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15H4a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 5.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span> <span class="lbltxt">Resources &amp; Equipment</span></a>
+    </nav>
+
+    <div class="navgroup">Clinical Catalogue</div>
+    <nav class="nav">
+      <a href="services-consultation-types.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg></span> <span class="lbltxt">Services &amp; Consultation Types</span> <span class="ct bad">297</span></a>
+      <a href="treatments-procedures.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg></span> <span class="lbltxt">Treatments &amp; Procedures</span></a>
+      <a href="packages-pricing.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></span> <span class="lbltxt">Packages &amp; Reference Pricing</span></a>
+    </nav>
+
+    <div class="navgroup">People &amp; Access</div>
+    <nav class="nav">
+      <a href="doctors-staff.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span> <span class="lbltxt">Doctors &amp; Staff</span></a>
+      <a class="on" href="roster-sessions.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span> <span class="lbltxt">Doctor Sessions &amp; Staff Rosters</span> <span class="ct warn">3</span></a>
+      <a href="user-onboard.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span> <span class="lbltxt">Users, Roles &amp; Permissions</span> <span class="ct warn">2</span></a>
+    </nav>
+
+    <div class="navgroup">Scheduling Rules</div>
+    <nav class="nav">
+      <a href="availability.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg></span> <span class="lbltxt">Calendars &amp; Availability</span></a>
+      <a href="resource-availability.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg></span> <span class="lbltxt">Resource Availability</span></a>
+      <a href="slots-queue-rules.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span> <span class="lbltxt">Slots, Capacity, Booking &amp; Queue Rules</span></a>
+    </nav>
+
+    <div class="navgroup">Patient &amp; EMR Configuration</div>
+    <nav class="nav">
+      <a href="patient-fields.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span> <span class="lbltxt">Patient Fields, Identity &amp; Consent</span></a>
+      <a href="emr-templates.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12h6M9 16h6M9 8h6"/><rect x="4" y="3" width="16" height="18" rx="2"/></svg></span> <span class="lbltxt">EMR Templates &amp; Clinical Metrics</span></a>
+      <a href="medication-config.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 20.5a6 6 0 0 1-8.49-8.49l9-9a6 6 0 0 1 8.49 8.49z"/><line x1="8.5" y1="8.5" x2="15.5" y2="15.5"/></svg></span> <span class="lbltxt">Medication &amp; Prescription</span></a>
+      <a href="orders-care-plans.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span> <span class="lbltxt">Clinical Orders &amp; Care Plans</span></a>
+    </nav>
+
+    <div class="navgroup">Clinical Support Masters</div>
+    <nav class="nav">
+      <a href="clinical-support-masters.html#lab"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3v6l-5 9a2 2 0 0 0 1.7 3h12.6a2 2 0 0 0 1.7-3l-5-9V3"/><line x1="8" y1="3" x2="16" y2="3"/></svg></span> <span class="lbltxt">Laboratory</span></a>
+      <a href="clinical-support-masters.html#pharm"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg></span> <span class="lbltxt">Pharmacy Reference</span></a>
+      <a href="clinical-support-masters.html#inv"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg></span> <span class="lbltxt">Inventory &amp; Stores</span></a>
+      <a href="clinical-support-masters.html#bed"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg></span> <span class="lbltxt">Lightweight Stay</span></a>
+    </nav>
+
+    <div class="navgroup">Reference Masters &amp; Audit</div>
+    <nav class="nav">
+      <a href="reference-audit.html#ref"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></span> <span class="lbltxt">Reference Values</span></a>
+      <a href="reference-audit.html#ids"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/></svg></span> <span class="lbltxt">Identifier Rules</span></a>
+      <a href="reference-audit.html#lifecycle"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></span> <span class="lbltxt">Configuration Lifecycle</span></a>
+      <a href="reference-audit.html#audit"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span> <span class="lbltxt">Audit History</span></a>
+    </nav>
+
+    <div class="navgroup">Engagement &amp; System</div>
+    <nav class="nav">
+      <a href="notifications-reminders.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></span> <span class="lbltxt">Notifications &amp; Reminders</span></a>
+      <a href="knowledge-base.html"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span> <span class="lbltxt">Knowledge Base</span> <span class="ct warn">1</span></a>
+    </nav>
+
+    <div class="sync"><span class="live"><i></i> Live</span> · synced just now</div>
+    <div class="user">
+      <span class="av">RM</span>
+      <div class="utxt"><b>Rajeev Malhotra</b><span>Hospital Administrator</span></div>
+      <a class="lout" href="login.html" title="Sign out"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></a>
+    </div>
+  </aside>
+
+  <!-- ==================== MAIN ==================== -->
+  <div class="main">
+    <div class="content">
+
+      <div class="wsbar">
+        <div class="htitle">
+          <h1>Doctor Sessions &amp; Staff Rosters</h1>
+          <p><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+             Week of 17 – 23 August 2026 · <span id="branchLbl">Main Campus</span></p>
+        </div>
+        <div class="wsbar-actions">
+          <div class="cdrop branchpick" id="ctxBrDrop">
+            <button type="button" class="cdbtn" id="ctxBrBtn">
+              <span class="bic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+              <span class="cdlbl" id="ctxBrBtnLbl">Main Campus</span>
+              <svg class="chv" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="cdmenu" id="ctxBrMenu">
+              <div class="cdsearch"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input type="text" id="ctxBrSearch" placeholder="Search branch…" autocomplete="off"></div>
+              <div class="cdlist" id="ctxBrList"></div>
+              <div class="cdempty" id="ctxBrEmpty">No matches</div>
+            </div>
+          </div>
+          <button class="btn btn-primary" id="addBtn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> <span id="addBtnTxt">Add session</span>
+          </button>
+          <button class="hbtn" title="Exceptions &amp; leave" id="excBtn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4M16 2v4M3 10h18"/><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="9" y1="16" x2="15" y2="16"/></svg>
+            <span class="cnt">1</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ---------- TOP-LEVEL WORKSPACE TABS (BRD recommended UI: Doctor Sessions / Staff Rosters covered by the role toggle above; On-call, Leave & Blocks, Substitutions below) ---------- -->
+      <div class="note info">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        <span>Sessions and rosters decide who is bookable and when. Changes apply to future slots only; sessions already booked stay as they are.</span>
+      </div>
+
+      <div class="pillsrow">
+        <div class="mseg" id="wsTabs">
+          <button class="on" data-ws="docsess">Doctor Sessions</button>
+          <button data-ws="staffrost">Staff Rosters</button>
+          <button data-ws="oncall">On-call</button>
+          <button data-ws="leave">Leave &amp; Blocks</button>
+          <button data-ws="subs">Substitutions</button>
+        </div>
+        <div class="mseg" id="roleSeg" style="display:none">
+          <button class="on" data-r="doc">Doctors</button>
+          <button data-r="staff">Nursing &amp; Staff</button>
+        </div>
+        <div class="mseg" id="topTabSeg" style="display:none">
+          <button class="on" data-tab="roster">Roster grid</button>
+          <button data-tab="oncall">On-call</button>
+          <button data-tab="leave">Leave &amp; Blocks</button>
+          <button data-tab="subs">Substitutions</button>
+        </div>
+        <span class="sp"></span>
+        <div class="mseg" id="viewSeg">
+          <button class="on" data-v="week">Week</button>
+          <button data-v="month">Month</button>
+        </div>
+      </div>
+
+      <div id="roleDocView">
+      <!-- ---------- COUNTS ---------- -->
+      <div class="pills">
+        <div class="pill" style="--pc:var(--brand-2)"><i><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/></svg></i><b id="tSess">0</b> Sessions this week</div>
+        <div class="pill" style="--pc:var(--info)"><i><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></i><b id="tHrs">0</b> Clinic hours rostered</div>
+        <div class="pill" style="--pc:var(--ink-muted)"><i><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></i><b id="tLeave">0</b> Leave days</div>
+        <div class="pill" style="--pc:var(--warning)"><i><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></i><b id="tBlock">0</b> Temporary blocks</div>
+        <div class="pill" style="--pc:var(--danger)"><i><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></i><b id="tConf">0</b> Conflicts</div>
+        <div class="pill" style="--pc:var(--st-inconsult)"><i><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg></i><b id="tNoRos">0</b> Doctors with no roster</div>
+      </div>
+
+      <!-- ---------- CONFLICT BANNER ---------- -->
+      <div class="banner" id="cfBanner">
+        <span class="bic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>
+        <div>
+          <b id="cfText">1 scheduling conflict on this roster</b>
+          <span id="cfDetail">Consulting Room 2 double-booked on Tuesday. Dr. KVNN Santosh Murthy has two overlapping sessions</span>
+        </div>
+        <span class="sp"></span>
+        <button class="btn btn-ghost btn-sm" id="cfReview">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Review
+        </button>
+        <button class="btn btn-ghost btn-sm" id="cfDismiss">Dismiss</button>
+      </div>
+
+      <!-- ---------- ROSTER GRID ---------- -->
+      <div class="card" id="docRosterCard">
+        <!-- doctor/dept filters + week-month view · moved between the two role views (doc/staff) via JS so it always sits inside whichever roster card is showing -->
+        <div class="filterbar" id="rosterFilterbar">
+          <div class="cdrop" id="docDrop">
+            <button type="button" class="cdbtn" id="docBtn"><span class="cdlbl" id="docBtnLbl">All doctors</span><svg class="chv" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <div class="cdmenu"><div class="cdlist" id="docList"></div></div>
+          </div>
+          <div class="cdrop" id="deptDrop">
+            <button type="button" class="cdbtn" id="deptBtn"><span class="cdlbl" id="deptBtnLbl">All departments</span><svg class="chv" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <div class="cdmenu"><div class="cdlist" id="deptList"></div></div>
+          </div>
+        </div>
+        <div class="ch">
+          <span class="cico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
+          <div><h3 id="gridTitle">Weekly roster · 17 – 23 August 2026</h3><p>Click any session block for actions · click an empty cell to add one</p></div>
+          <div class="rt">
+            <span class="chip mute" id="gridCount">5 doctors</span>
+            <span class="chip warn" id="pubStatus" title="Draft changes are not visible to any booking channel yet">Draft · not published</span>
+            <button class="btn btn-primary btn-sm" id="publishBtn">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Publish roster
+            </button>
+          </div>
+        </div>
+        <div class="cb" style="padding:12px">
+          <div class="rwrap"><div class="rgrid wk" id="rgrid"></div></div>
+          <div class="empty" id="gridEmpty" style="display:none">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="9" y1="16" x2="15" y2="16"/></svg>
+            <b>No doctors match these filters</b><span>Clear the doctor or department filter to see the roster again.</span>
+          </div>
+        </div>
+        <div class="legend">
+          <span><i style="background:var(--brand-soft)"></i>Scheduled session</span>
+          <span><i style="background:repeating-linear-gradient(45deg,#EFF4F0,#EFF4F0 3px,#E1EAE4 3px,#E1EAE4 6px)"></i>On leave</span>
+          <span><i style="background:var(--warning-soft)"></i>Block</span>
+          <span><i style="background:var(--danger-soft)"></i>Conflict</span>
+          <span class="sp"></span>
+          <span style="color:var(--ink-muted)">Slot duration and buffers come from Calendars &amp; Availability Configuration</span>
+        </div>
+      </div>
+      </div>
+
+      <!-- ==================== NURSING & STAFF ROSTER ==================== -->
+      <div id="roleStaffView" style="display:none">
+      <!-- ---------- COUNTS ---------- -->
+      <div class="pills">
+        <div class="pill" style="--pc:var(--brand-2)"><i><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/></svg></i><b id="sTSess">0</b> Shifts this week</div>
+        <div class="pill" style="--pc:var(--info)"><i><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></i><b id="sTHrs">0</b> Hours rostered</div>
+        <div class="pill" style="--pc:var(--ink-muted)"><i><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></i><b id="sTLeave">0</b> Leave days</div>
+        <div class="pill" style="--pc:var(--info)"><i><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></i><b id="sTTemp">0</b> Temporary assignments</div>
+        <div class="pill" style="--pc:var(--danger)"><i><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></i><b id="sTConf">0</b> Conflicts</div>
+        <div class="pill" style="--pc:var(--st-inconsult)"><i><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg></i><b id="sTNoRos">0</b> Staff with no roster</div>
+      </div>
+
+      <!-- ---------- CONFLICT BANNER ---------- -->
+      <div class="banner" id="sCfBanner">
+        <span class="bic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>
+        <div>
+          <b id="sCfText">1 scheduling conflict on this roster</b>
+          <span id="sCfDetail">Sohela Farheen has two overlapping shifts on Tuesday</span>
+        </div>
+        <span class="sp"></span>
+        <button class="btn btn-ghost btn-sm" id="sCfReview">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Review
+        </button>
+        <button class="btn btn-ghost btn-sm" id="sCfDismiss">Dismiss</button>
+      </div>
+
+      <!-- ---------- NURSING COVERAGE GAP WARNING ---------- -->
+      <div class="banner" id="covGapBanner" style="background:var(--warning-soft);border-color:#F0DCAE">
+        <span class="bic" style="color:var(--warning)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+        <div>
+          <b id="covGapText">Nursing coverage gap on this roster</b>
+          <span id="covGapDetail">No nurse is rostered on one or more days this week</span>
+        </div>
+        <span class="sp"></span>
+        <button class="btn btn-ghost btn-sm" id="covGapDismiss">Dismiss</button>
+      </div>
+
+      <!-- ---------- ROSTER GRID ---------- -->
+      <div class="card" id="staffRosterCard">
+        <div class="ch">
+          <span class="cico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
+          <div><h3 id="sGridTitle">Weekly roster · 17 – 23 August 2026</h3><p>Click any shift block for actions · click an empty cell to add one</p></div>
+          <div class="rt">
+            <span class="chip mute" id="sGridCount">5 staff</span>
+            <span class="chip warn" id="sPubStatus" title="Draft changes are only visible to Clinic Admin so far">Draft · not confirmed</span>
+            <button class="btn btn-primary btn-sm" id="sPublishBtn">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Confirm roster
+            </button>
+          </div>
+        </div>
+        <div class="cb" style="padding:12px">
+          <div class="rwrap"><div class="rgrid wk" id="rgridStaff"></div></div>
+          <div class="empty" id="sGridEmpty" style="display:none">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="9" y1="16" x2="15" y2="16"/></svg>
+            <b>No staff match these filters</b><span>Clear the staff or department filter to see the roster again.</span>
+          </div>
+        </div>
+        <div class="legend">
+          <span><i style="background:var(--brand-soft)"></i>Scheduled shift</span>
+          <span><i style="background:repeating-linear-gradient(45deg,#EFF4F0,#EFF4F0 3px,#E1EAE4 3px,#E1EAE4 6px)"></i>On leave</span>
+          <span><i style="background:var(--info-soft)"></i>Temporary assignment</span>
+          <span><i style="background:var(--warning-soft)"></i>Block</span>
+          <span><i style="background:var(--danger-soft)"></i>Conflict</span>
+          <span class="sp"></span>
+          <span style="color:var(--ink-muted)">On-call and overtime are marked on each shift · departments/branches follow Clinic &amp; Branch Configuration</span>
+        </div>
+      </div>
+      </div>
+
+      <!-- ==================== ON-CALL TAB ==================== -->
+      <div id="tabOncall" style="display:none">
+        <div class="card">
+          <div class="ch">
+            <span class="cico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg></span>
+            <div><h3>On-call coverage</h3><p>Staff flagged on-call for this week, across all departments</p></div>
+            <div class="rt"><span class="chip mute" id="oncallCount">0 on-call</span></div>
+          </div>
+          <div class="cb" id="oncallBody" style="padding:0"></div>
+        </div>
+      </div>
+
+      <!-- ==================== LEAVE & BLOCKS TAB ==================== -->
+      <div id="tabLeave" style="display:none">
+        <div class="card">
+          <div class="ch">
+            <span class="cico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span>
+            <div><h3>Leave &amp; blocks</h3><p>Every doctor and staff exception affecting this week, from either roster</p></div>
+            <div class="rt"><span class="chip mute" id="leaveCount">0 entries</span></div>
+          </div>
+          <div class="cb" id="leaveBody" style="padding:0"></div>
+        </div>
+      </div>
+
+      <!-- ==================== SUBSTITUTIONS TAB ==================== -->
+      <div id="tabSubs" style="display:none">
+        <div class="card">
+          <div class="ch">
+            <span class="cico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+            <div><h3>Substitutions &amp; cover</h3><p>Cover assigned in place of a doctor or staff member on leave/block, this week</p></div>
+            <div class="rt"><span class="chip mute" id="subsCount">0 active</span></div>
+          </div>
+          <div class="cb" id="subsBody" style="padding:0"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SESSION POPOVER ==================== -->
+<div class="pop" id="pop">
+  <div class="ptitle"><b id="popT">Session</b><span id="popS">—</span></div>
+  <button data-a="edit"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4z"/></svg> <span id="popEditTxt">Edit session</span></button>
+  <button data-a="block"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Block this date</button>
+  <button data-a="sub"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg> <span id="popSubTxt">Assign substitute</span></button>
+  <button class="dgr" data-a="del"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg> <span id="popDelTxt">Delete session</span></button>
+</div>
+
+<!-- ==================== OVERLAY + DRAWERS ==================== -->
+<div class="ovl" id="ovl"></div>
+
+<!-- RECURRING SESSION BUILDER -->
+<aside class="drw" id="drwSess" aria-label="Recurring session builder">
+  <div class="dhd">
+    <div><h3 id="sessTitle">Add recurring session</h3><p>Creates repeating clinic slots for one doctor</p></div>
+    <button class="x" data-close><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  </div>
+  <div class="dbd">
+    <!-- field order = BRD §10 A "Doctor-session fields"; same form components as every other screen -->
+    <div class="fld"><label>Doctor</label><div class="f fsel" id="bDocWrap"><button type="button" class="fselbtn" id="bDocBtn" style="width:100%"></button><div class="fselpanel" id="bDocPanel"></div><input type="hidden" id="bDoc"></div></div>
+    <div class="f2">
+      <div class="fld"><label>Branch</label><div class="robranch"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span id="bBranchLbl">Main Campus</span></div><input type="hidden" id="bBranch"></div>
+      <div class="fld"><label>Department</label><div class="f fsel" id="bDeptWrap"><button type="button" class="fselbtn" id="bDeptBtn" style="width:100%"></button><div class="fselpanel" id="bDeptPanel"></div><input type="hidden" id="bDept"></div></div>
+    </div>
+    <div class="fld"><label>Session name</label><input type="text" id="bSessName" placeholder="e.g. Morning OP"></div>
+    <div class="f2">
+      <div class="fld"><label>Start time</label><input type="time" id="bStart" value="10:00"></div>
+      <div class="fld"><label>End time</label><input type="time" id="bEnd" value="13:00"></div>
+    </div>
+    <div class="fld">
+      <label>Days of week</label>
+      <div class="dchips" id="bDays">
+        <button class="dchip on" data-d="0">Mon</button><button class="dchip" data-d="1">Tue</button>
+        <button class="dchip" data-d="2">Wed</button><button class="dchip on" data-d="3">Thu</button>
+        <button class="dchip" data-d="4">Fri</button><button class="dchip" data-d="5">Sat</button>
+        <button class="dchip" data-d="6">Sun</button>
+      </div>
+    </div>
+    <div class="f2">
+      <div class="fld"><label>Effective from</label><input type="date" id="bFrom" value="2026-08-17"></div>
+      <div class="fld"><label>Effective until</label><input type="date" id="bUntil" value="2026-09-30"></div>
+    </div>
+    <div class="fld"><label>Recurrence</label><div class="f fsel" id="bRecurWrap"><button type="button" class="fselbtn" id="bRecurBtn" style="width:100%"></button><div class="fselpanel" id="bRecurPanel"></div><input type="hidden" id="bRecur" value="weekly"></div><p class="hint" id="bRecurHint">Repeats every week on the days selected above.</p></div>
+    <div class="fld" id="bRecurCustomFld" style="display:none"><label>Custom recurrence</label><textarea id="bRecurCustom" placeholder="e.g. Alternate weeks on Mon and Thu"></textarea></div>
+    <div class="fld"><label>Room</label><div class="f fsel" id="bRoomWrap"><button type="button" class="fselbtn" id="bRoomBtn" style="width:100%"></button><div class="fselpanel" id="bRoomPanel"></div><input type="hidden" id="bRoom"></div></div>
+    <div class="fld"><label>Services available</label>
+      <div class="mchk" id="bSvcMchk"><div class="mchk-chips" id="bSvcChips"></div><button type="button" class="fselbtn" id="bSvcBtn" style="width:100%">Select services…</button><div class="mchk-panel" id="bSvcPanel"></div></div>
+    </div>
+    <div class="fld"><label>Resource group <span style="text-transform:none;font-weight:500;color:var(--ink-muted)">(optional)</span></label><div class="f fsel" id="bResGroupWrap"><button type="button" class="fselbtn" id="bResGroupBtn" style="width:100%"></button><div class="fselpanel" id="bResGroupPanel"></div><input type="hidden" id="bResGroup"></div></div>
+<div class="hint">From Reference Masters → Resource Groups</div>
+    <div class="fld"><label>Status</label>
+      <div class="mseg" id="bStatusSeg"><button type="button" data-v="Active" class="on">Active</button><button type="button" data-v="Draft">Draft</button></div>
+      <input type="hidden" id="bStatus" value="Active">
+    </div>
+    <input type="hidden" id="bSlot" value="15 min">
+    <div class="fld"><label>Notes <span style="text-transform:none;font-weight:500;color:var(--ink-muted)">(optional)</span></label><textarea id="bNotes" placeholder="Internal notes visible to Clinic Admin only"></textarea></div>
+
+    <div class="sect">Preview · occurrences to be created</div>
+    <div class="prev" id="bPrev"></div>
+    <div id="bWarn"></div>
+  </div>
+  <div class="dft">
+    <button class="btn btn-primary" id="bSave" style="flex:1;justify-content:center">Create sessions</button>
+    <button class="btn btn-ghost" data-close>Cancel</button>
+  </div>
+</aside>
+
+<!-- EXCEPTION & LEAVE -->
+<aside class="drw" id="drwExc" aria-label="Exception and leave">
+  <div class="dhd">
+    <div><h3 id="excTitle">Temporary doctor change</h3><p>Leave, block, timing change or substitution for a period</p></div>
+    <button class="x" data-close><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  </div>
+  <div class="dbd">
+    <div class="fld"><label>Doctor</label><select id="eDoc" class="fsel" style="width:100%"></select></div>
+    <div class="fld"><label>Change type</label>
+      <select id="eType" class="fsel" style="width:100%"><option value="lv">Leave</option><option value="bl">Block</option><option value="tc">Temporary change</option><option value="sub">Substitution</option></select>
+    </div>
+    <div class="f2">
+      <div class="fld"><label>From</label><input type="datetime-local" id="eFrom" value="2026-08-20T09:00"></div>
+      <div class="fld"><label>Until</label><input type="datetime-local" id="eUntil" value="2026-08-21T18:00"></div>
+    </div>
+
+    <div class="f2" id="eTcFields" style="display:none">
+      <div class="fld"><label>New start time</label><input type="time" id="eTcStart" value="09:00"></div>
+      <div class="fld"><label>New end time</label><input type="time" id="eTcEnd" value="12:00"></div>
+    </div>
+
+    <div class="sect" id="eSubsSect">Substitute doctor</div>
+    <div class="subs" id="eSubs"></div>
+    <p class="hint" id="eSubHint">Choose a doctor to absorb the booked appointments, or leave the slots uncovered and cancel them.</p>
+    <div id="eCapWarn"></div>
+
+    <div class="fld"><label>Reason</label>
+      <select id="eReasonCat" class="fsel" style="width:100%">
+        <option>Personal / medical leave</option>
+        <option selected>Conference / CME</option>
+        <option>Administrative block</option>
+        <option>Approved timing change</option>
+        <option>Substitution arranged</option>
+        <option>Other</option>
+      </select>
+<div class="hint">From Reference Masters → Doctor Change Reasons</div>
+    </div>
+    <div class="fld"><label>Notes <span style="text-transform:none;font-weight:500;color:var(--ink-muted)">(optional)</span></label>
+      <textarea id="eReason" placeholder="Visible to reception when a booking is refused">Attending wound-care conference.</textarea>
+    </div>
+
+    <div class="sect">Impact</div>
+    <div class="warnbox" id="eImpact">
+      <span style="color:var(--warning);flex:none"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/></svg></span>
+      <div><b id="eImpactT">14 booked appointments affected</b>
+        <span id="eImpactS">2 sessions fall inside this range. Patients must be moved or informed.</span></div>
+    </div>
+
+  </div>
+  <div class="dft">
+    <button class="btn btn-primary" id="eSave" style="flex:1;justify-content:center">Apply exception</button>
+    <button class="btn btn-ghost" data-close>Cancel</button>
+  </div>
+</aside>
+
+<!-- STAFF SHIFT BUILDER -->
+<aside class="drw" id="drwShift" aria-label="Shift builder">
+  <div class="dhd">
+    <div><h3 id="shiftTitle">Add shift</h3><p>Creates repeating shifts for one staff member</p></div>
+    <button class="x" data-close><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  </div>
+  <div class="dbd">
+    <!-- field order = BRD §10 C "Staff-roster fields" -->
+    <div class="fld"><label>Staff / staff group</label><select id="shDoc" class="fsel" style="width:100%"></select></div>
+    <div class="f2">
+      <div class="fld"><label>Branch</label><select id="shBranch" class="fsel" style="width:100%"></select></div>
+      <div class="fld"><label>Department</label><select id="shDept" class="fsel" style="width:100%"></select></div>
+    </div>
+    <div class="fld"><label>Shift template</label>
+      <select id="shTemplate" class="fsel" style="width:100%"></select>
+      <p class="hint">Fills the times below. Pick Custom for a one-off shift.</p>
+      <button type="button" class="btn btn-ghost btn-sm" id="shTplManageBtn" style="margin-top:6px">Manage shift templates</button>
+      <div id="shTplManage" style="display:none;margin-top:8px;padding:10px;border:1px solid var(--line);border-radius:var(--r-sm);background:var(--surface-2)">
+        <div id="shTplList"></div>
+        <button type="button" class="btn btn-ghost btn-sm" id="shTplAdd" style="margin-top:2px">+ Add shift template</button>
+      </div>
+    </div>
+    <div class="fld"><label>Shift name</label><input type="text" id="shName" placeholder="e.g. Evening Ward Cover"></div>
+    <div class="f2">
+      <div class="fld"><label>Start time</label><input type="time" id="shStart" value="15:00"></div>
+      <div class="fld"><label>End time</label><input type="time" id="shEnd" value="23:00"></div>
+    </div>
+    <div class="fld"><label>Rotation pattern</label>
+      <select id="shRotation" class="fsel" style="width:100%"><option value="Fixed" selected>Fixed</option><option value="Rotating">Rotating</option><option value="Custom">Custom</option></select>
+    </div>
+    <div class="fld">
+      <label>Days / roster period</label>
+      <div class="dchips" id="shDays">
+        <button class="dchip" data-d="0">Mon</button><button class="dchip on" data-d="1">Tue</button>
+        <button class="dchip" data-d="2">Wed</button><button class="dchip on" data-d="3">Thu</button>
+        <button class="dchip" data-d="4">Fri</button><button class="dchip" data-d="5">Sat</button>
+        <button class="dchip" data-d="6">Sun</button>
+      </div>
+    </div>
+    <div class="f2">
+      <div class="fld"><label>On-call</label><button type="button" class="dchip" id="shOnCall" style="width:100%">Off</button></div>
+      <div class="fld"><label>Overtime period <span style="text-transform:none;font-weight:500;color:var(--ink-muted)">(optional)</span></label><button type="button" class="dchip" id="shOT" style="width:100%">Off</button></div>
+    </div>
+    <div class="f2" id="shOTFields" style="display:none">
+      <div class="fld"><label>Overtime from</label><input type="time" id="shOTStart" value="23:00"></div>
+      <div class="fld"><label>Overtime until</label><input type="time" id="shOTEnd" value="01:00"></div>
+    </div>
+    <p class="hint" id="shOTHint" style="display:none;margin-top:-9px;margin-bottom:13px">Operational marker only. No payroll or pay-rate calculation.</p>
+    <div class="fld"><label>Temporary assignment</label><button type="button" class="dchip" id="shTmpAsg" style="width:100%">Off</button></div>
+    <div class="f2" id="shTmpFields" style="display:none">
+      <div class="fld"><label>Assigned branch</label><select id="shTmpBranch" class="fsel" style="width:100%"></select></div>
+      <div class="fld"><label>Assigned unit</label><select id="shTmpDept" class="fsel" style="width:100%"></select></div>
+    </div>
+    <div class="f2">
+      <div class="fld"><label>Effective from</label><input type="date" id="shFrom" value="2026-08-17"></div>
+      <div class="fld"><label>Effective until</label><input type="date" id="shUntil" value="2026-09-30"></div>
+    </div>
+    <div class="fld"><label>Notes <span style="text-transform:none;font-weight:500;color:var(--ink-muted)">(optional)</span></label><textarea id="shNotes" placeholder="Internal notes visible to the shift-lead only"></textarea></div>
+
+    <div class="sect">Preview · occurrences to be created</div>
+    <div class="prev" id="shPrev"></div>
+    <div id="shWarn"></div>
+  </div>
+  <div class="dft">
+    <button class="btn btn-primary" id="shSave" style="flex:1;justify-content:center">Create shifts</button>
+    <button class="btn btn-ghost" data-close>Cancel</button>
+  </div>
+</aside>
+
+<!-- STAFF EXCEPTION & LEAVE -->
+<aside class="drw" id="drwStaffExc" aria-label="Staff exception and leave">
+  <div class="dhd">
+    <div><h3 id="sExcTitle">Staff leave or block</h3><p>Remove a staff member from the roster for a period</p></div>
+    <button class="x" data-close><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  </div>
+  <div class="dbd">
+    <div class="fld"><label>Staff member</label><select id="seDoc" class="fsel" style="width:100%"></select></div>
+    <div class="fld"><label>Change type</label>
+      <select id="seType" class="fsel" style="width:100%"><option value="lv">Leave</option><option value="bl">Block</option></select>
+    </div>
+    <div class="f2">
+      <div class="fld"><label>From</label><input type="date" id="seFrom" value="2026-08-20"></div>
+      <div class="fld"><label>Until</label><input type="date" id="seUntil" value="2026-08-21"></div>
+    </div>
+    <div class="fld"><label>Notes <span style="text-transform:none;font-weight:500;color:var(--ink-muted)">(optional)</span></label>
+      <textarea id="seReason" placeholder="Visible to the shift-lead when a shift goes uncovered">On approved leave.</textarea>
+    </div>
+
+    <div class="sect">Impact</div>
+    <div class="warnbox" id="seImpact">
+      <span style="color:var(--warning);flex:none"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/></svg></span>
+      <div><b id="seImpactT">2 shifts affected</b>
+        <span id="seImpactS">1 shift falls inside this range. The floor needs cover or runs short-staffed.</span></div>
+    </div>
+
+    <div class="sect">Cover</div>
+    <div class="subs" id="seSubs"></div>
+    <p class="hint" id="seSubHint">Choose a staff member to cover the floor, or leave the shift uncovered.</p>
+  </div>
+  <div class="dft">
+    <button class="btn btn-primary" id="seSave" style="flex:1;justify-content:center">Apply exception</button>
+    <button class="btn btn-ghost" data-close>Cancel</button>
+  </div>
+</aside>
+
+<div id="toast"></div>
+
+<script src="/js/roster-sessions.js"></script>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a) return;
+    var href = a.getAttribute('href');
+    if (!href || /^https?:\/\//i.test(href) || href.indexOf('mailto:') === 0) return;
+    if (href.indexOf('.html') === -1) return;
+    e.preventDefault();
+    try {
+      window.parent.postMessage({ source: 'legacy-frame', type: 'navigate', href: href }, '*');
+    } catch (err) {
+      // no-op: if parent isn't reachable, do nothing rather than throw
+    }
+  }, true);
+})();
+</script>
+
+</body>
+</html>

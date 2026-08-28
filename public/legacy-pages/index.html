@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="0; url=admin-dashboard.html">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AWH Clinic Admin</title>
+  <style>
+    body { margin: 0; display: flex; align-items: center; justify-content: center; min-height: 100vh; font-family: Inter, system-ui, sans-serif; background: #f4f6f8; color: #374151; }
+    p { font-size: 14px; } a { color: #16a34a; }
+  </style>
+</head>
+<body>
+  <p>Redirecting to <a href="admin-dashboard.html">Admin Dashboard</a>&hellip;</p>
+  <script>window.location.replace('admin-dashboard.html');</script>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a) return;
+    var href = a.getAttribute('href');
+    if (!href || /^https?:\/\//i.test(href) || href.indexOf('mailto:') === 0) return;
+    if (href.indexOf('.html') === -1) return;
+    e.preventDefault();
+    try {
+      window.parent.postMessage({ source: 'legacy-frame', type: 'navigate', href: href }, '*');
+    } catch (err) {
+      // no-op: if parent isn't reachable, do nothing rather than throw
+    }
+  }, true);
+})();
+</script>
+
+</body>
+</html>
