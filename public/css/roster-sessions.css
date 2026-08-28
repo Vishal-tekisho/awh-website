@@ -33,7 +33,8 @@ a{text-decoration:none;color:inherit}
 .app{display:flex;width:100%;height:100vh;overflow:hidden}
 .side{width:var(--sidebar);flex:0 0 var(--sidebar);background:transparent;display:flex;flex-direction:column;padding:18px 14px;overflow-y:auto}
 .brand{display:flex;align-items:center;gap:11px;padding:4px 6px 18px}
-.brand .lg{width:42px;height:42px;border-radius:12px;background:var(--brand-grad);display:grid;place-items:center;color:#fff;flex:none;box-shadow:0 8px 18px -8px var(--brand-2)}
+.brand .lg{width:42px;height:42px;border-radius:12px;background:#fff;display:grid;place-items:center;flex:none;box-shadow:0 8px 18px -8px var(--brand-2);overflow:hidden;padding:3px}
+.brand .lg img{width:100%;height:100%;object-fit:contain;display:block}
 .brand b{font-family:var(--font-display);font-size:14px;display:block;line-height:1.2}
 .brand span{font-size:11px;color:var(--ink-muted)}
 .navgroup{font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-muted);font-weight:700;padding:12px 12px 5px}
@@ -276,7 +277,8 @@ a{text-decoration:none;color:inherit}
    ============================================================ */
 .side{width:var(--sidebar);flex:0 0 var(--sidebar);background:transparent;border:0;box-shadow:none;display:flex;flex-direction:column;padding:18px 14px;overflow-y:auto}
 .brand{display:flex;align-items:center;gap:11px;padding:4px 6px 22px;border-bottom:0;margin:0}
-.brand .lg{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,#34B173,#1E8153);display:grid;place-items:center;color:#fff;flex:none;box-shadow:0 8px 18px -8px #1E8153}
+.brand .lg{width:42px;height:42px;border-radius:12px;background:#fff;display:grid;place-items:center;flex:none;box-shadow:0 8px 18px -8px #1E8153;overflow:hidden;padding:3px}
+.brand .lg img{width:100%;height:100%;object-fit:contain;display:block}
 .brand b{font-family:var(--font-display);font-size:14px;font-weight:700;display:block;line-height:1.2}
 .brand span{font-size:11px;color:var(--ink-muted);font-weight:400}
 .navgroup{font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-muted);font-weight:700;padding:14px 12px 6px;margin:0}
