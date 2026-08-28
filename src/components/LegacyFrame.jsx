@@ -35,7 +35,9 @@ export default function LegacyFrame({ file, title }) {
         display: "block",
         border: "none",
         width: "100%",
-        height: "100vh",
+        height: "100dvh",
+        minHeight: "-webkit-fill-available",
+        overflow: "hidden",
       }}
     />
   );

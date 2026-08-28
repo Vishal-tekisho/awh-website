@@ -35,7 +35,7 @@
 ::-webkit-scrollbar-thumb{background:var(--line-strong);border-radius:8px}
 ::-webkit-scrollbar-thumb:hover{background:var(--ink-muted)}
 ::-webkit-scrollbar-corner{background:transparent}
-html,body{height:100%}
+html,body{height:100%;overflow:hidden}
 body{font-family:var(--font-sans);font-size:15px;color:var(--ink);
   background:linear-gradient(160deg,#DCEDE1,#EDF5EE 45%,#E4F0E7 80%,#D8EBDE);
   -webkit-font-smoothing:antialiased;line-height:1.55;overflow-x:hidden}
@@ -47,7 +47,7 @@ a{text-decoration:none;color:inherit}
 ::selection{background:var(--brand-soft);color:var(--brand-ink)}
 
 /* ---- App shell (full viewport) ---- */
-.app{display:flex;width:100%;height:100vh;overflow:hidden}
+.app{display:flex;width:100%;height:100vh;height:100dvh;overflow:hidden;min-height:-webkit-fill-available}
 
 /* ---- Sidebar (transparent, sits on the page gradient) ---- */
 .side{width:var(--sidebar);flex:0 0 var(--sidebar);background:transparent;display:flex;flex-direction:column;padding:18px 14px;overflow-y:auto}
@@ -80,15 +80,21 @@ a{text-decoration:none;color:inherit}
 .lout:hover{border-color:var(--danger);color:var(--danger)}
 
 /* ---- Main : white "sheet" content panel ---- */
-.main{flex:1 1 auto;display:flex;flex-direction:column;height:100vh;overflow:hidden;min-width:0}
+.main{flex:1 1 auto;display:flex;flex-direction:column;height:100vh;height:100dvh;overflow:hidden;min-width:0;min-height:-webkit-fill-available}
 .content{flex:1;overflow-y:auto;overflow-x:hidden;padding:22px 28px 24px;min-width:0;
-  background:var(--surface);border:1px solid var(--line);border-bottom:0;border-radius:var(--r-lg) var(--r-lg) 0 0;margin:0 16px}
+  background:var(--surface);border:1px solid var(--line);border-bottom:0;border-radius:var(--r-lg) var(--r-lg) 0 0;margin:0 16px;
+  container-type:inline-size;container-name:workspace;
+  padding-top:max(22px, env(safe-area-inset-top, 0px))}
 
 /* ---- Workspace toolbar (inside the sheet) ---- */
-.wsbar{display:flex;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap}
+.wsbar{
+  display:flex;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:nowrap}
+.wsbar-actions{display:flex;align-items:center;gap:12px;margin-left:auto;flex-wrap:nowrap;flex-shrink:0;min-width:0}
+.htitle{flex:1;min-width:0}
 .htitle h1{font-size:20px;font-weight:800;line-height:1.15}
-.htitle .meta{font-size:12px;color:var(--ink-2);margin-top:2px;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.htitle .meta{font-size:12px;color:var(--ink-2);margin-top:2px;display:flex;align-items:center;gap:7px;min-width:0}
 .htitle .meta svg{color:var(--brand-2);flex:none}
+.htitle .meta span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .sp{flex:1}
 /* branch switcher · same custom dropdown component as Doctors & Staff's
    department/branch pickers (.cdrop/.cdbtn/.cdmenu), styled as a compact
@@ -138,6 +144,7 @@ a{text-decoration:none;color:inherit}
 .hbtn{width:42px;height:42px;border-radius:13px;background:var(--surface);border:1px solid var(--line-strong);color:var(--ink-2);display:grid;place-items:center;position:relative;transition:var(--dur);flex:none}
 .hbtn:hover{border-color:var(--brand);color:var(--brand-2);background:var(--brand-soft)}
 .hbtn .cnt{position:absolute;top:-4px;right:-4px;background:var(--danger);color:#fff;font-size:10px;font-weight:700;min-width:18px;height:18px;border-radius:9px;display:grid;place-items:center;border:2px solid var(--surface);font-variant-numeric:tabular-nums}
+.btn-label-short{display:none}
 
 /* ---- Grids ---- */
 .grid{display:grid;gap:14px;margin-bottom:14px}
@@ -335,13 +342,53 @@ a{text-decoration:none;color:inherit}
 #toast.show{transform:translateX(-50%) translateY(0)}
 
 @media(max-width:1560px){.jump{grid-template-columns:repeat(4,minmax(0,1fr))}}
-@media(max-width:1100px){.side{display:none}.g-2{grid-template-columns:minmax(0,1fr)}
-  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}.jump{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .content{padding:16px;margin:0 8px}}
-@media(max-width:900px){.rlist{grid-template-columns:repeat(3,minmax(0,1fr))}.stats{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media(max-width:820px){.cfgrid{grid-template-columns:1fr}}
+@media(max-width:1200px){.side{display:none}.g-2{grid-template-columns:minmax(0,1fr)}
+  .content{padding:16px;margin:0 8px;padding-top:max(16px, env(safe-area-inset-top, 0px))}}
+
+/* Narrow main sheet: title + actions on one row, meta full-width below */
+@container workspace (max-width:1140px){
+  .wsbar{
+    display:grid;grid-template-columns:minmax(0,1fr) auto;
+    grid-template-areas:"title actions" "meta meta";
+    align-items:center;column-gap:12px;row-gap:8px;flex-wrap:unset}
+  .htitle{display:contents}
+  .htitle h1{grid-area:title;margin:0;min-width:0}
+  .htitle .meta{grid-area:meta;margin-top:0}
+  .wsbar-actions{grid-area:actions;margin-left:0;justify-self:end;align-self:center}
+  .wsbar-actions .branchpick .cdlbl{max-width:8.5rem}
+  #runValidationBtn{font-size:12px;padding:8px 12px;white-space:nowrap}
+  #runValidationBtn .btn-label-full{display:none}
+  #runValidationBtn .btn-label-short{display:inline}
+  .stats{grid-template-columns:repeat(3,minmax(0,1fr))}
+  #issueTile{grid-column:1 / -1}
+  .readywrap{flex-direction:column}
+  .rside{flex:none;width:100%;max-width:none;border-right:none;border-bottom:1px solid var(--line);padding-right:0;padding-bottom:18px}
+  .rmain{width:100%;min-width:0}
+  .rfooter{flex-wrap:wrap}
+  .cfgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .jump{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+@container workspace (max-width:820px){
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .rlist{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cfgrid{grid-template-columns:1fr}}
+
+/* Fallback when container queries are unavailable */
+@supports not (container-type:inline-size){
+  @media(max-width:1140px){
+    .wsbar{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"title actions" "meta meta";align-items:center;column-gap:12px;row-gap:8px}
+    .htitle{display:contents}
+    .htitle h1{grid-area:title;margin:0}
+    .htitle .meta{grid-area:meta;margin-top:0}
+    .wsbar-actions{grid-area:actions;margin-left:0;justify-self:end}
+    .stats{grid-template-columns:repeat(3,minmax(0,1fr))}
+    #issueTile{grid-column:1 / -1}
+    .readywrap{flex-direction:column}
+    .rside{flex:none;width:100%;border-right:none;border-bottom:1px solid var(--line);padding-right:0;padding-bottom:18px}
+    .rmain{width:100%;min-width:0}
+    .cfgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}}
 @media(max-width:640px){.rlist{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .wsbar{flex-direction:column;align-items:stretch}}
+  .wsbar-actions{flex-wrap:wrap;justify-self:stretch;justify-content:flex-end}}
 
 /* sidebar: scrollbar hidden (scroll still works) */
 .side{scrollbar-width:none;-ms-overflow-style:none}

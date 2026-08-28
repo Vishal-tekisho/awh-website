@@ -100,6 +100,20 @@ function buildLegacyHtml(originalHtml) {
   // root, since these documents live at /legacy-pages/<file>.html.
   html = html.replace(/(href|src)="(\.\/)?(css|js)\/([^"]+)"/g, '$1="/$3/$4"');
 
+  // Shared collapsible sidebar (toggle + icon hover labels).
+  if (!html.includes("/css/sidebar.css")) {
+    html = html.replace(
+      /(<link rel="stylesheet" href="\/css\/[^"]+\.css">)/,
+      '$1\n<link rel="stylesheet" href="/css/sidebar.css">'
+    );
+  }
+  if (!html.includes("/js/sidebar.js")) {
+    html = html.replace(
+      /(<script src="\/js\/[^"]+\.js"><\/script>)/,
+      '<script src="/js/sidebar.js"></script>\n$1'
+    );
+  }
+
   // Inject the navigation bridge right before </body>.
   html = html.replace(/<\/body>/i, `${BRIDGE_SCRIPT}\n</body>`);
 
